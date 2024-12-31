@@ -1,13 +1,19 @@
-
+import Image from "next/image"
 
 export default function Header() {
+    const logo = "/LG-OPTICS.png";
     return (
-        <header className="flex justify-around w-full h-36 bg-white">
+        <header className="flex justify-around w-full h-36 bg-primary">
             <div className="flex w-full justify-around items-center">
                 <div>
-                    <h1 className="text-black text-2xl">L&G Optics</h1>
+                    <Image
+                        src={logo}
+                        width={200}
+                        height={200}
+                        alt="logo"
+                    />
                 </div>
-                <div className="flex text-black"> 
+                <div className="flex text-white"> 
                     <p className="ml-6 cursor-pointer">Productos</p>
                     <p className="ml-6 cursor-pointer">Paquetes</p>
                     <p className="ml-6 cursor-pointer">Contacto</p>

@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#114D72",
       },
       backgroundImage: {
         bannerImg: "url('/glasses-copy.jpg')"

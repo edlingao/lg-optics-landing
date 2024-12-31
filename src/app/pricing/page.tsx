@@ -6,8 +6,8 @@ export default function Pricing() {
         <div className="flex flex-col w-full justify-center items-center mb-8 mt-4">
             <h3 className="text-2xl font-bold">Planes & Paquetes</h3>
             <div className="flex w-full justify-center">
-                <div className="flex flex-col border-2 border-solid border-red-500 mt-4 w-80 h-80 mr-8">
-                    <div className="text-center bg-red-500 h-12 flex justify-center items-center">
+                <div className="flex flex-col border-2 border-solid border-primary mt-4 w-80 h-80 mr-8">
+                    <div className="text-center bg-primary h-12 flex justify-center items-center">
                         <h4 className="font-bold text-white">Starter</h4>
                     </div>
                     <div className="flex flex-col py-4 px-4">
@@ -24,8 +24,8 @@ export default function Pricing() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col border-2 border-solid border-red-500 mt-4 w-80 h-80 mr-8">
-                    <div className="text-center bg-red-500 h-12 flex justify-center items-center">
+                <div className="flex flex-col border-2 border-solid border-primary mt-4 w-80 h-80 mr-8">
+                    <div className="text-center bg-primary h-12 flex justify-center items-center">
                         <h4 className="font-bold text-white">Starter</h4>
                     </div>
                     <div className="flex flex-col py-4 px-4">
@@ -42,8 +42,8 @@ export default function Pricing() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col border-2 border-solid border-red-500 mt-4 w-80 h-80 mr-8">
-                    <div className="text-center bg-red-500 h-12 flex justify-center items-center">
+                <div className="flex flex-col border-2 border-solid border-primary mt-4 w-80 h-80 mr-8">
+                    <div className="text-center bg-primary h-12 flex justify-center items-center">
                         <h4 className="font-bold text-white">Starter</h4>
                     </div>
                     <div className="flex flex-col py-4 px-4">
