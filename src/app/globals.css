@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Roots N Branches";
+  src: url("/assets/roots-n-branches.regular.ttf");
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
@@ -16,7 +22,7 @@
 
 body {
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roots N Branches", sans-serif;
 }
 
 .banner {

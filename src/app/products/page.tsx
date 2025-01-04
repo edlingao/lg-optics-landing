@@ -58,9 +58,6 @@ export default function Products() {
                     </p>
                 </div>
             </div>
-            <button className="border-2 border-solid border-red-500 w-40 h-12">
-                Agenda una cita
-            </button>
         </div>
     )
 }
