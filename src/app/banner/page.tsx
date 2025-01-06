@@ -21,7 +21,7 @@ export default function Banner() {
                 </div>
             </section>
             <section className="w-full mt-4">
-                <h2 className="text-center text-3xl">Algunas de las marcas que ofrecemos</h2>
+                <h2 className="text-center text-3xl text-primary">Algunas de las marcas que ofrecemos</h2>
                 <div className="flex h-48 justify-center items-center justify-evenly">
                         <Image
                             src={ffLogo}

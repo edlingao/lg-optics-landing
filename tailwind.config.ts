@@ -15,6 +15,10 @@ export default {
       },
       backgroundImage: {
         bannerImg: "url('/glasses-copy.jpg')"
+      },
+      fontFamily: {
+        roots: ['"Roots N Branches"', 'cursive'],
+        yaa: ['"YAA Type"', 'sans-serif'],
       }
     },
   },

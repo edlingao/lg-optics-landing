@@ -7,6 +7,15 @@
   src: url("/assets/roots-n-branches.regular.ttf");
 }
 
+@font-face {
+  font-family: "YAA Type FREE";
+  src: url("/assets/artill_yaa_type_light_demo_.ttf") format(truetype);
+}
+
+@font-face {
+  font-family: "Bariol";
+  src: url("/assets/Bariol_Serif_Regular.otf");
+}
 
 :root {
   --background: #ffffff;
@@ -22,7 +31,7 @@
 
 body {
   color: var(--foreground);
-  font-family: "Roots N Branches", sans-serif;
+  font-family: "Bariol";
 }
 
 .banner {

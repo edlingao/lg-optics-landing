@@ -43,7 +43,7 @@ export default function ContactUs() {
     return (
         <div className="flex w-full h-full  mb-24 justify-center items-center">
             <div className="w-full h-96 flex flex-col px-8 items-center">
-                <h3 className="text-2xl font-bold mt-4">Contáctanos</h3>
+                <h3 className="text-4xl font-bold mt-4 text-primary">Contáctanos</h3>
                 <form
                     action="https://formspree.io/f/mkggqgpy"
                     method="POST"

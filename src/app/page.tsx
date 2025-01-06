@@ -6,20 +6,9 @@ import Pricing from "./pricing/page";
 import AboutUs from "./us/page";
 import ContactUs from "./contact/page";
 import Location from "./location/page";
-import localFont from "@next/font/local";
+import Footer from "./footer/page";
 
 
-const yaaFont = localFont({
-  src: "/assets/artill_yaa_type_light[demo].ttf",
-  variable: "--yaa-font",
-  display:"swap"
-});
-
-const rootsFont = localFont({
-  src: "/assets/roots-n-branches.regular.ttf",
-  variable: "--roots-font",
-  display:"swap"
-});
 
 export default function Home() {
   return (
@@ -32,6 +21,7 @@ export default function Home() {
       <ContactUs  />
       <AboutUs />
       <Location />
+      <Footer />
     </>
   );
 }

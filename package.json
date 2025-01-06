@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
-    "@next/font": "^14.2.15",
     "@react-google-maps/api": "^2.20.5",
     "dotenv": "^16.4.7",
     "next": "15.1.3",
