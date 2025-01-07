@@ -3,15 +3,23 @@
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 
+interface ContactForm {
+    name: string,
+    email: string,
+    message: string,
+}
+
 export default function ContactUs() {
     const [message, setMessage] = useState("");
     const [showMessage, setShowMessage] = useState(false); 
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const data = new FormData(event.target);
-        const response = await fetch(event.target.action, {
+        const form = event.target as HTMLFormElement;
+        const data = new FormData(form);
+
+        const response = await fetch(form.action, {
             method: 'POST',
             body: data,
             headers: {
@@ -23,7 +31,7 @@ export default function ContactUs() {
             
         if (!response.ok) {
             if (Array.isArray(result.error)) {
-                setMessage(result.error.map((error: { message: any }) => error.message).join(', '));
+                setMessage(result.error.map((error: { message: ContactForm }) => error.message).join(', '));
             } else if (result.error && typeof result.error.message === 'string') {
                 setMessage(result.error.message); 
             } else {
@@ -38,7 +46,7 @@ export default function ContactUs() {
         setShowMessage(true);
         setTimeout(() => setShowMessage(false), 8000);
 
-        event.target.reset();
+        form.reset();
     };
 
     return (
