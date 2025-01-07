@@ -13,15 +13,15 @@ import Footer from "./footer/page";
 export default function Home() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Banner />
       <Hallmark />
-      <Products />
+      {/* <Products />
+      <AboutUs />
       <Pricing />
       <ContactUs  />
-      <AboutUs />
-      <Location />
-      <Footer />
+      <Location /> */}
+      {/* <Footer /> */}
     </>
   );
 }

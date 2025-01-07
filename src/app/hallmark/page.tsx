@@ -3,7 +3,7 @@ import { GiSunglasses } from "react-icons/gi";
 
 export default function Hallmark() {
     return (
-        <div className="w-full flex flex-col justify-center items-center"> 
+        <div className="w-full flex flex-col justify-center items-center h-96"> 
             <h3 className="text-4xl font-bold text-primary">
                     Nuestro Sello Distintivo
             </h3>

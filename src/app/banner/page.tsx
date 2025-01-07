@@ -12,7 +12,7 @@ export default function Banner() {
             <section className="relative bg-bannerImg bg-cover bg-center bg-no-repeat h-[500px] w-full flex justify-center items-center ">
                 <div className="absolute inset-0 bg-black opacity-50"></div>
                 <div className="relative text-white text-center w-auto flex flex-col justify-center items-center">
-                    <h1 className="text-7xl tracking-normal mb-4">L&G Optics: Una solución a tu visión</h1>
+                    <h1 className="text-7xl tracking-normal mb-4">L & G OPTICS: Una solución a tu visión</h1>
                     <p className="w-2/5 tracking-wide">
                         En L&G Optics, te ofrecemos una amplia gama de lentes accesibles para satisfacer todas tus necesidades visuales.
                         Desde lentes de sol hasta lentes para protección contra la luz azul.

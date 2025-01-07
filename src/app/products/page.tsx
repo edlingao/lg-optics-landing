@@ -7,7 +7,7 @@ export default function Products() {
     const computerGlasses = "/334.jpg";
 
     return (
-        <div className="w-full flex flex-col justify-center items-center mt-8 text-primary">
+        <div className="w-full flex flex-col justify-center items-center mt-8 text-primary h-[75vh]">
             <h3 className="font-bold text-4xl text-primary">Productos</h3>
             <div className="card flex w-auto mb-8 mt-4">
                 <div className="mr-20">
