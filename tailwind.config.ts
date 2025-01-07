@@ -17,9 +17,14 @@ export default {
         bannerImg: "url('/glasses-copy.jpg')"
       },
       fontFamily: {
-        roots: ['"Roots N Branches"', 'cursive'],
-        yaa: ['"YAA Type"', 'sans-serif'],
-      }
+        roots: ['"Bakso Sapi"', 'cursive'],
+      },
+      screens: {
+        sm: '400px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+      },
     },
   },
   plugins: [],

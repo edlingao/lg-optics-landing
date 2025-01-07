@@ -4,16 +4,16 @@ export default function AboutUs() {
     const picture2 = "/optica2.jpeg";
 
     return (
-        <div className="flex flex-col w-full justify-start mt-4 items-center mb-8 text-primary h-[75vh]">
+        <div className="flex flex-col w-full justify-start mt-4 items-center mb-8 text-primary h-[100vh]">
             <h3 className="font-bold text-4xl">Sobre nosotros</h3>
-            <div className="flex w-full justify-center">
+            <div className="flex w-full justify-center sm:flex-col sm:items-center md:flex-row md:items-start">
                 <Image
                     src={picture2}
                     width={300}
                     height={200}
                     alt="optic-1"
                 />
-                <div className="w-[800px] ml-12 text-justify">
+                <div className="md:w-[800px] ml-12 md:text-justify sm:text-wrap sm:w-[350px] sm:h-[70vh]">
                     <p className="">
                         En L&G Optics, redefinimos la forma en que cuidas tu visión. Desde el primer día, nuestro propósito ha sido claro: combinar innovación, estilo y excelencia para ofrecerte una experiencia óptica única.
                         Fundada en 2024, L&G Optics nace de la pasión por cuidar lo más valioso: tu vista. Sabemos que cada mirada tiene una historia, y nuestra misión es ayudarte a verla con claridad.

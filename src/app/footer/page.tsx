@@ -7,17 +7,17 @@ export default function Footer() {
     return (
         <>
         
-            <footer className="flex w-full h-auto justify-between px-8 py-8 text-white font-bold w-full bg-primary">
+            <footer className="flex sm:flex-col md:flex-row w-full h-auto sm:justify-start md:justify-between px-8 py-8 text-white font-bold bg-primary">
                 <div className="flex flex-col  ">
-                    <p className="font-roots text-3xl tracking-wider">
-                        VER BiEN, <br />
-                        VERSE BiEN, <br />
-                        SENTiRSE BiEN. <br />
+                    <p className="font-roots text-3xl tracking-widest">
+                       ver Bien, <br />
+                        verse Bien, <br />
+                        sentirse Bien. <br />
                     </p>
                 </div>
-                <div className="flex flex-col items-center">
-                    <h4 className="text-center text-lg" >Siguenos en nuestras redes sociales</h4>
-                    <div className="flex mt-4 w-full justify-center items-center">
+                <div className="flex flex-col sm:mt-4 sm:mb-4">
+                    <h4 className="sm:text-start md:text-center text-lg" >Siguenos en nuestras redes sociales</h4>
+                    <div className="flex mt-4 w-full justify-center items-center sm:items-start sm:justify-start">
                         <Link href="https://www.instagram.com/lg.optics" className="mr-12">
                             <SiInstagram size={30}/>
                         </Link>

@@ -7,8 +7,8 @@ export default function Location() {
     return (
         <div className="flex w-full flex-col bg-white text-black justify-star mt-4 items-center text-primary h-[75vh]">
             <h3 className="font-bold text-4xl">Ubicación</h3>
-            <div className="flex flex-col w-full items-center">
-                <p>
+            <div className="flex flex-col w-full items-center ">
+                <p className="mb-4">
                     Encuentranos en: <br />
                     <span className="font-bold">
                         45 Sur #2910 Local 1 PB
@@ -17,8 +17,7 @@ export default function Location() {
                     </span>
                 </p>
                 <iframe
-                    width="650"
-                    height="450"
+                    className="md:w-[600px] sm:h-[450px] sm:w-[400px]"
                     frameBorder="0"
                     referrerPolicy="no-referrer-when-downgrade"
                     src={`https://www.google.com/maps/embed/v1/place?key=${mapKey}&q=45+Sur+2910-Puebla+Mexico`}

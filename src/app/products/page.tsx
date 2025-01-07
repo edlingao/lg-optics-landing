@@ -7,9 +7,9 @@ export default function Products() {
     const computerGlasses = "/334.jpg";
 
     return (
-        <div className="w-full flex flex-col justify-center items-center mt-8 text-primary h-[75vh]">
+        <div className="w-full flex flex-col justify-center items-center mt-8 sm:mt-[0px] text-primary md:h-[100vh] sm:h-[135vh]">
             <h3 className="font-bold text-4xl text-primary">Productos</h3>
-            <div className="card flex w-auto mb-8 mt-4">
+            <div className="card flex w-auto mb-8 mt-4 sm:flex-col md:flex-row">
                 <div className="mr-20">
                     <Image
                         src={regularGlasses}
@@ -25,7 +25,7 @@ export default function Products() {
                     </p>
                 </div>
             </div>
-            <div className="card flex w-auto mb-8">
+            <div className="card flex w-auto sm:flex-col md:flex-row">
                 
                 <div className="text w-96">
                     <h4 className="text-2xl font-bold">Lentes de Sol</h4>
@@ -42,7 +42,7 @@ export default function Products() {
                     />
                 </div>
             </div>
-            <div className="card flex w-auto mb-8">
+            <div className="card flex w-auto sm:flex-col sm:mt-4 md:flex-row">
                 <div className="mr-20">
                     <Image
                         src={computerGlasses}
