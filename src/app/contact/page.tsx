@@ -54,7 +54,7 @@ export default function ContactUs() {
             <div className="w-full flex flex-col px-8 items-center">
                 <h3 className="text-4xl font-bold mt-4 text-primary">Contáctanos</h3>
                 <form
-                    action="https://formspree.io/f/mkggqgpy"
+                    action="https://formspree.io/f/mqaagrow"
                     method="POST"
                     className="form flex flex-col md:w-1/5 mt-4 sm:w-[300px]"
                     onSubmit={handleSubmit}
