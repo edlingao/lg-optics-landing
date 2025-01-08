@@ -39,8 +39,8 @@ export default function Header() {
       <nav className="hidden md:flex gap-8 text-white">
         <Link
           href="/products"
-          className={`text-lg hover:underline ${
-            activeLink === "/products" ? "font-bold underline" : ""
+          className={`text-lg hover:underline hover:underline-offset-4 ${
+            activeLink === "/products" ? "font-bold underline underline-offset-4" : ""
           }`}
           onClick={() => handleLinkClick("/products")}
         >
@@ -48,8 +48,8 @@ export default function Header() {
         </Link>
         <Link
           href="/pricing"
-          className={`text-lg hover:underline ${
-            activeLink === "/pricing" ? "font-bold underline" : ""
+          className={`text-lg hover:underline hover:underline-offset-4 ${
+            activeLink === "/pricing" ? "font-bold underline underline-offset-4" : ""
           }`}
           onClick={() => handleLinkClick("/pricing")}
         >
@@ -57,8 +57,8 @@ export default function Header() {
         </Link>
         <Link
           href="/contact"
-          className={`text-lg hover:underline ${
-            activeLink === "/contact" ? "font-bold underline" : ""
+          className={`text-lg hover:underline hover:underline-offset-4 ${
+            activeLink === "/contact" ? "font-bold underline underline-offset-4" : ""
           }`}
           onClick={() => handleLinkClick("/contact")}
         >
@@ -66,8 +66,8 @@ export default function Header() {
         </Link>
         <Link
           href="/us"
-          className={`text-lg hover:underline ${
-            activeLink === "/us" ? "font-bold underline" : ""
+          className={`text-lg hover:underline hover:underline-offset-4 ${
+            activeLink === "/us" ? "font-bold underline underline-offset-4" : ""
           }`}
           onClick={() => handleLinkClick("/us")}
         >
@@ -75,8 +75,8 @@ export default function Header() {
         </Link>
         <Link
           href="/location"
-          className={`text-lg hover:underline ${
-            activeLink === "/location" ? "font-bold underline" : ""
+          className={`text-lg hover:underline hover:underline-offset-4 ${
+            activeLink === "/location" ? "font-bold underline underline-offset-4" : ""
           }`}
           onClick={() => handleLinkClick("/location")}
         >
@@ -105,8 +105,8 @@ export default function Header() {
         <nav className="flex flex-col items-center justify-center h-full gap-6">
           <Link
             href="/products"
-            className={`text-lg hover:underline ${
-              activeLink === "/products" ? "font-bold underline" : ""
+            className={`text-lg hover:underline hover:underline-offset-4 ${
+              activeLink === "/products" ? "font-bold underline underline-offset-4" : ""
             }`}
             onClick={() => handleLinkClick("/products")}
           >
@@ -114,8 +114,8 @@ export default function Header() {
           </Link>
           <Link
             href="/pricing"
-            className={`text-lg hover:underline ${
-              activeLink === "/pricing" ? "font-bold underline" : ""
+            className={`text-lg hover:underline hover:underline-offset-4 ${
+              activeLink === "/pricing" ? "font-bold underline underline-offset-4" : ""
             }`}
             onClick={() => handleLinkClick("/pricing")}
           >
@@ -123,8 +123,8 @@ export default function Header() {
           </Link>
           <Link
             href="/contact"
-            className={`text-lg hover:underline ${
-              activeLink === "/contact" ? "font-bold underline" : ""
+            className={`text-lg hover:underline hover:underline-offset-4 ${
+              activeLink === "/contact" ? "font-bold underline underline-offset-4" : ""
             }`}
             onClick={() => handleLinkClick("/contact")}
           >
@@ -132,8 +132,8 @@ export default function Header() {
           </Link>
           <Link
             href="/us"
-            className={`text-lg hover:underline ${
-              activeLink === "/us" ? "font-bold underline" : ""
+            className={`text-lg hover:underline hover:underline-offset-4 ${
+              activeLink === "/us" ? "font-bold underline underline-offset-4" : ""
             }`}
             onClick={() => handleLinkClick("/us")}
           >
@@ -141,8 +141,8 @@ export default function Header() {
           </Link>
           <Link
             href="/location"
-            className={`text-lg hover:underline ${
-              activeLink === "/location" ? "font-bold underline" : ""
+            className={`text-lg hover:underline hover:underline-offset-4 ${
+              activeLink === "/location" ? "font-bold underline underline-offset-4" : ""
             }`}
             onClick={() => handleLinkClick("/location")}
           >

@@ -20,7 +20,7 @@ export default {
         roots: ['"Bakso Sapi"', 'cursive'],
       },
       screens: {
-        sm: '400px',
+        sm: '350px',
         md: '768px',
         lg: '1024px',
         xl: '1280px',
