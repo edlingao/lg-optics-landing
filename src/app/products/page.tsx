@@ -1,63 +1,171 @@
-import Image from "next/image"
+"use client";
 
+import React, { useState } from "react";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import Link from "next/link";
 
 export default function Products() {
-    const regularGlasses = "/28794.jpg";
-    const sunGlasses = "/332.jpg";
-    const computerGlasses = "/334.jpg";
+    const glassesRoute = "/glasses/prescription-lenses";
+    const sunglassesRoute = "/glasses/sunglasses";
+    const blueRoute = "/glasses/blue-filter-lenses";
+
+
+    const prescriptionGlasses = [`${glassesRoute}/glasses-1.png`,`${glassesRoute}/glasses-2.png`,`${glassesRoute}/glasses-3.png`,`${glassesRoute}/glasses-4.png`,`${glassesRoute}/glasses-5.png`,`${glassesRoute}/glasses-6.png`,`${glassesRoute}/glasses-7.png`,`${glassesRoute}/glasses-8.png`,`${glassesRoute}/glasses-9.png`,`${glassesRoute}/glasses-10.png`];
+    const sunglasses = [`${sunglassesRoute}/sunglasses-1.png`,`${sunglassesRoute}/sunglasses-2.png`,`${sunglassesRoute}/sunglasses-3.png`,`${sunglassesRoute}/sunglasses-4.png`,`${sunglassesRoute}/sunglasses-5.png`,`${sunglassesRoute}/sunglasses-6.png`,`${sunglassesRoute}/sunglasses-7.png`];
+    const blueFilterLenses = [`${blueRoute}/blue-1.png`,`${blueRoute}/blue-2.png`,`${blueRoute}/blue-3.png`,`${blueRoute}/blue-4.png`,`${blueRoute}/blue-5.png`,`${blueRoute}/blue-6.png`,`${blueRoute}/blue-7.png`,`${blueRoute}/blue-8.png`];
+
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [currentImages, setCurrentImages] = useState<string[]>([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const openModal = (images: string[], index: number) => {
+        setCurrentImages(images);
+        setCurrentIndex(index);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        setCurrentImages([]);
+        setCurrentIndex(0);
+    };
+
+    const nextImage = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === currentImages.length - 1 ? 0 : prevIndex + 1
+        );
+    };
+
+    const prevImage = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? currentImages.length - 1 : prevIndex - 1
+        );
+    };
 
     return (
-        <div className="w-full flex flex-col justify-center items-center mt-8 sm:mt-[0px] text-primary md:h-[100vh] sm:h-[150vh]">
-            <h3 className="font-bold text-4xl text-primary">Productos</h3>
-            <div className="card flex w-auto mb-8 mt-4 sm:flex-col md:flex-row">
-                <div className="mr-20">
-                    <Image
-                        src={regularGlasses}
-                        width={300}
-                        height={300}
-                        alt="regular-glasses"
-                    />
+        <div className="w-full flex flex-col items-center sm:mt-[0px] text-primary md:h-[100vh] sm:h-[175vh]">
+            <div className="flex flex-col justify-center items-center mt-8">
+                <h3 className="font-bold text-4xl text-primary">Productos</h3>
+            </div>
+
+            <div className="flex flex-wrap justify-center mt-8 w-full px-8 gap-8">
+               
+                <div className="w-96 flex flex-col justify-center items-center">
+                    <h4 className="text-2xl font-bold mb-4 text-center">Lentes Graduados</h4>
+                    <Swiper
+                        spaceBetween={20}
+                        slidesPerView={0}
+                        navigation={false}
+                        modules={[Navigation]}
+                        className="mySwiper"
+                    >
+                        {prescriptionGlasses.map((img, index) => (
+                            <SwiperSlide key={index}>
+                                <Image
+                                    src={img}
+                                    width={500}
+                                    height={500}
+                                    alt={`Lentes Graduados ${index}`}
+                                    className="cursor-pointer"
+                                    onClick={() => openModal(prescriptionGlasses, index)}
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
-                <div className="text w-96">
-                    <h4 className="text-2xl font-bold">Lentes Graduados</h4>
-                    <p>
-                        Diseñados para mejorar tu visión y adaptarse a tus necesidades específicas. Contamos con monturas modernas, elegantes y cómodas para que encuentres el par perfecto que combine funcionalidad y estilo.
-                    </p>
+
+                <div className="w-[380]">
+                    <h4 className="text-2xl font-bold mb-4 text-center">Lentes de Sol</h4>
+                    <Swiper
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        navigation={false}
+                        modules={[Navigation]}
+                        className="mySwiper"
+                    >
+                        {sunglasses.map((img, index) => (
+                            <SwiperSlide key={index}>
+                                <Image
+                                    src={img}
+                                    width={500}
+                                    height={500}
+                                    alt={`Lentes de Sol ${index}`}
+                                    className="cursor-pointer"
+                                    onClick={() => openModal(sunglasses, index)}
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+                <div className="w-[380px]">
+                    <h4 className="text-2xl font-bold mb-4 text-center">Lentes con Filtro Azul</h4>
+                    <Swiper
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        navigation={false}
+                        modules={[Navigation]}
+                        className="mySwiper"
+                    >
+                        {blueFilterLenses.map((img, index) => (
+                            <SwiperSlide key={index}>
+                                <Image
+                                    src={img}
+                                    width={500}
+                                    height={500}
+                                    alt={`Lentes con Filtro Azul ${index}`}
+                                    className="cursor-pointer"
+                                    onClick={() => openModal(blueFilterLenses, index)}
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
             </div>
-            <div className="card flex w-auto sm:flex-col md:flex-row">
-                
-                <div className="text w-96">
-                    <h4 className="text-2xl font-bold">Lentes de Sol</h4>
-                    <p>
-                        Protege tus ojos de los dañinos rayos UV sin renunciar al diseño. Ofrecemos una amplia selección de lentes que no solo cuidan tu visión, sino que complementan tu personalidad y estilo de vida.
-                    </p>
+
+
+            {isModalOpen && (
+                <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center z-50">
+                    <button
+                        className="absolute top-4 right-4 text-white text-2xl"
+                        onClick={closeModal}
+                    >
+                        ✖
+                    </button>
+                    <div className="relative flex items-center justify-center">
+                        <button
+                            className="absolute left-[-50px] sm:left-[-30px] top-1/2 transform -translate-y-1/2 text-white text-3xl sm:text-2xl z-50"
+                            onClick={prevImage}
+                        >
+                            ◀
+                        </button>
+                        <Image
+                            src={currentImages[currentIndex]}
+                            width={600}
+                            height={600}
+                            alt={`Modal Image ${currentIndex}`}
+                            className="object-contain md:max-w-full md:max-h-full sm:max-w-80"
+                        />
+                        <button
+                            className="absolute right-[-50px] sm:right-[-30px] top-1/2 transform -translate-y-1/2 text-white text-3xl sm:text-2xl z-50"
+                            onClick={nextImage}
+                        >
+                            ▶
+                        </button>
+                    </div>
                 </div>
-                <div className="ml-20">
-                    <Image
-                        src={sunGlasses}
-                        width={300}
-                        height={300}
-                        alt="regular-glasses"
-                    />
-                </div>
-            </div>
-            <div className="card flex w-auto sm:flex-col sm:mt-4 md:flex-row">
-                <div className="mr-20">
-                    <Image
-                        src={computerGlasses}
-                        width={300}
-                        height={300}
-                        alt="regular-glasses"
-                    />
-                </div>
-                <div className="text w-96">
-                    <h4 className="text-2xl font-bold">Lentes con Filtro Azul</h4>
-                    <p>
-                        Ideales para quienes pasan largas horas frente a pantallas. Estos lentes reducen la fatiga ocular y protegen tus ojos de la luz azul, ayudándote a mantener tu comodidad y rendimiento durante todo el día.
-                    </p>
-                </div>
-            </div>
+            
+            )}
+
+            <p className="font-bold  mt-12 text sm:w-[380px] md:w-[650px]">
+                Encuentra más de nuestros productos en nuestra tienda física o en nuestras redes sociales.
+            </p>
+            <Link  href="/location" className="underline underline-offset-4 mt-4" >
+                Conoce nuestra ubicación.
+            </Link>
         </div>
-    )
+    );
 }
