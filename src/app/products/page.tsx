@@ -14,9 +14,9 @@ export default function Products() {
     const blueRoute = "/glasses/blue-filter-lenses";
 
 
-    const prescriptionGlasses = [`${glassesRoute}/glasses-1.png`,`${glassesRoute}/glasses-2.png`,`${glassesRoute}/glasses-3.png`,`${glassesRoute}/glasses-4.png`,`${glassesRoute}/glasses-5.png`,`${glassesRoute}/glasses-6.png`,`${glassesRoute}/glasses-7.png`,`${glassesRoute}/glasses-8.png`,`${glassesRoute}/glasses-9.png`,`${glassesRoute}/glasses-10.png`];
+    const prescriptionGlasses = [`${glassesRoute}/glasses-1.png`,`${glassesRoute}/glasses-2.png`,`${glassesRoute}/glasses-3.png`,`${glassesRoute}/glasses-4.png`,`${glassesRoute}/glasses-5.png`,`${glassesRoute}/glasses-6.png`,`${glassesRoute}/glasses-7.png`,`${glassesRoute}/glasses-8.png`,`${glassesRoute}/glasses-9.png`,`${glassesRoute}/glasses-10.png`, `${glassesRoute}/glasses-11.png`];
     const sunglasses = [`${sunglassesRoute}/sunglasses-1.png`,`${sunglassesRoute}/sunglasses-2.png`,`${sunglassesRoute}/sunglasses-3.png`,`${sunglassesRoute}/sunglasses-4.png`,`${sunglassesRoute}/sunglasses-5.png`,`${sunglassesRoute}/sunglasses-6.png`,`${sunglassesRoute}/sunglasses-7.png`];
-    const blueFilterLenses = [`${blueRoute}/blue-1.png`,`${blueRoute}/blue-2.png`,`${blueRoute}/blue-3.png`,`${blueRoute}/blue-4.png`,`${blueRoute}/blue-5.png`,`${blueRoute}/blue-6.png`,`${blueRoute}/blue-7.png`,`${blueRoute}/blue-8.png`];
+    const blueFilterLenses = [`${blueRoute}/blue-1.png`,`${blueRoute}/blue-2.png`,`${blueRoute}/blue-3.png`,`${blueRoute}/blue-4.png`,`${blueRoute}/blue-5.png`,`${blueRoute}/blue-6.png`,`${blueRoute}/blue-7.png`,`${blueRoute}/blue-8.png`,`${blueRoute}/blue-9.png`];
 
     const [isModalOpen, setModalOpen] = useState(false);
     const [currentImages, setCurrentImages] = useState<string[]>([]);
