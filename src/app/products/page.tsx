@@ -52,7 +52,7 @@ export default function Products() {
                 <h3 className="font-bold text-4xl text-primary">Productos</h3>
             </div>
 
-            <div className="flex flex-wrap justify-center mt-8 w-full px-8 gap-8">
+            <div className="flex md:flex-row sm:flex-col justify-center mt-8 w-full px-8 gap-8">
                
                 <div className="w-96 flex flex-col justify-center items-center">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes Graduados</h4>
