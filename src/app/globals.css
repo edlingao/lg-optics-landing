@@ -41,3 +41,8 @@ body {
   width: auto;
   height: 250px;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #FFFFFF !important;
+}

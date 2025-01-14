@@ -7,6 +7,9 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Link from "next/link";
+import { HiArrowSmLeft } from "react-icons/hi";
+import { HiArrowSmRight } from "react-icons/hi";
+import { IoMdClose } from "react-icons/io";
 
 export default function Products() {
     const glassesRoute = "/glasses/prescription-lenses";
@@ -47,19 +50,19 @@ export default function Products() {
     };
 
     return (
-        <div className="w-full flex flex-col items-center sm:mt-[0px] text-primary md:h-[100vh] sm:h-[190vh]">
+        <div className="w-full flex flex-col items-center sm:mt-[0px] text-primary md:h-[100vh] sm:h-[200vh]">
             <div className="flex flex-col justify-center items-center mt-8">
                 <h3 className="font-bold text-4xl text-primary">Productos</h3>
             </div>
 
             <div className="flex md:flex-row sm:flex-col justify-center mt-8 w-full px-8 gap-8">
                
-                <div className="md:w-[400px] sm:w-[300px]">
+                <div className="md:w-[400px] sm:w-[450px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes Graduados</h4>
                     <Swiper
                         spaceBetween={20}
                         slidesPerView={1}
-                        navigation={false}
+                        navigation={true}
                         modules={[Navigation]}
                         className="mySwiper"
                     >
@@ -78,12 +81,12 @@ export default function Products() {
                     </Swiper>
                 </div>
 
-                <div className="md:w-[400px] sm:w-[300px]">
+                <div className="md:w-[400px] sm:w-[450px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes de Sol</h4>
                     <Swiper
                         spaceBetween={20}
                         slidesPerView={1}
-                        navigation={false}
+                        navigation={true}
                         modules={[Navigation]}
                         className="mySwiper"
                     >
@@ -101,12 +104,12 @@ export default function Products() {
                         ))}
                     </Swiper>
                 </div>
-                <div className="md:w-[400px] sm:w-[300px]">
+                <div className="md:w-[400px] sm:w-[450px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes con Filtro Azul</h4>
                     <Swiper
                         spaceBetween={20}
                         slidesPerView={1}
-                        navigation={false}
+                        navigation={true}
                         modules={[Navigation]}
                         className="mySwiper"
                     >
@@ -133,14 +136,14 @@ export default function Products() {
                         className="absolute top-4 right-4 text-white text-2xl"
                         onClick={closeModal}
                     >
-                        ✖
+                        <IoMdClose size={35} />
                     </button>
                     <div className="relative flex items-center justify-center">
                         <button
                             className="absolute left-[-50px] sm:left-[-30px] top-1/2 transform -translate-y-1/2 text-white text-3xl sm:text-2xl z-50"
                             onClick={prevImage}
                         >
-                            ◀
+                            <HiArrowSmLeft />
                         </button>
                         <Image
                             src={currentImages[currentIndex]}
@@ -153,7 +156,7 @@ export default function Products() {
                             className="absolute right-[-50px] sm:right-[-30px] top-1/2 transform -translate-y-1/2 text-white text-3xl sm:text-2xl z-50"
                             onClick={nextImage}
                         >
-                            ▶
+                            <HiArrowSmRight />
                         </button>
                     </div>
                 </div>
