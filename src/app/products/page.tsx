@@ -58,7 +58,7 @@ export default function Products() {
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes Graduados</h4>
                     <Swiper
                         spaceBetween={20}
-                        slidesPerView={0}
+                        slidesPerView={1}
                         navigation={false}
                         modules={[Navigation]}
                         className="mySwiper"
