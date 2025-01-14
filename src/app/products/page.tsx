@@ -52,9 +52,9 @@ export default function Products() {
                 <h3 className="font-bold text-4xl text-primary">Productos</h3>
             </div>
 
-            <div className="flex md:flex-wrap sm:flex-col justify-center mt-8 w-full px-8 gap-8">
+            <div className="flex md:flex-row sm:flex-col justify-center mt-8 w-full px-8 gap-8">
                
-                <div className="md:w-[380px] sm:w-[150px]">
+                <div className="w-[400px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes Graduados</h4>
                     <Swiper
                         spaceBetween={20}
@@ -78,7 +78,7 @@ export default function Products() {
                     </Swiper>
                 </div>
 
-                <div className="md:w-[380px] sm:w-[150px]">
+                <div className="w-[400px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes de Sol</h4>
                     <Swiper
                         spaceBetween={20}
@@ -101,7 +101,7 @@ export default function Products() {
                         ))}
                     </Swiper>
                 </div>
-                <div className="md:w-[380px] sm:w-[150px]">
+                <div className="w-[400px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes con Filtro Azul</h4>
                     <Swiper
                         spaceBetween={20}
