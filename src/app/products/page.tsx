@@ -52,9 +52,9 @@ export default function Products() {
                 <h3 className="font-bold text-4xl text-primary">Productos</h3>
             </div>
 
-            <div className="flex md:flex-row sm:flex-col justify-center mt-8 w-full px-8 gap-8">
+            <div className="flex md:flex-wrap sm:flex-col justify-center mt-8 w-full px-8 gap-8">
                
-                <div className="w-96 flex flex-col justify-center items-center">
+                <div className="md:w-[380px] sm:w-[150px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes Graduados</h4>
                     <Swiper
                         spaceBetween={20}
@@ -78,7 +78,7 @@ export default function Products() {
                     </Swiper>
                 </div>
 
-                <div className="w-[380]">
+                <div className="md:w-[380px] sm:w-[150px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes de Sol</h4>
                     <Swiper
                         spaceBetween={20}
@@ -101,7 +101,7 @@ export default function Products() {
                         ))}
                     </Swiper>
                 </div>
-                <div className="w-[380px]">
+                <div className="md:w-[380px] sm:w-[150px]">
                     <h4 className="text-2xl font-bold mb-4 text-center">Lentes con Filtro Azul</h4>
                     <Swiper
                         spaceBetween={20}
@@ -144,8 +144,8 @@ export default function Products() {
                         </button>
                         <Image
                             src={currentImages[currentIndex]}
-                            width={600}
-                            height={600}
+                            width={500}
+                            height={500}
                             alt={`Modal Image ${currentIndex}`}
                             className="object-contain md:max-w-full md:max-h-full sm:max-w-80"
                         />
