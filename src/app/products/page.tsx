@@ -47,7 +47,7 @@ export default function Products() {
     };
 
     return (
-        <div className="w-full flex flex-col items-center sm:mt-[0px] text-primary md:h-[100vh] sm:h-[205vh]">
+        <div className="w-full flex flex-col items-center sm:mt-[0px] text-primary md:h-[100vh] sm:h-[225vh]">
             <div className="flex flex-col justify-center items-center mt-8">
                 <h3 className="font-bold text-4xl text-primary">Productos</h3>
             </div>
