@@ -4,7 +4,7 @@ export default function AboutUs() {
     const picture2 = "/optica2.jpeg";
 
     return (
-        <div className="flex flex-col w-full justify-start mt-4 items-center mb-8 text-primary h-[130vh]">
+        <div className="flex flex-col w-full justify-start mt-4 items-center mb-8 text-primary min-h-[70vh] max-h-[100vh]">
             <h3 className="font-bold text-4xl">Sobre nosotros</h3>
             <div className="flex w-full justify-center sm:flex-col sm:items-center md:flex-row md:items-start">
                 <Image
