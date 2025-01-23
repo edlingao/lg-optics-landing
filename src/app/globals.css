@@ -34,7 +34,6 @@
 body {
   color: var(--foreground);
   font-family: "Bariol";
-  min-height: 100vh;
 }
 
 .banner {
