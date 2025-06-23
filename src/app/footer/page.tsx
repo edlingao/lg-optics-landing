@@ -24,7 +24,7 @@ export default function Footer() {
                         <Link href="https://www.facebook.com/profile.php?id=61571379852165" className="mr-12">
                             <SiFacebook size={30} />
                         </Link>
-                        <Link href="https://www.tiktok.com/@lg.optics?lang=es" className="mr-12">
+                        <Link href="https://www.tiktok.com/@lg.optics3?_t=ZS-8xS6uoutJc0&_r=1" className="mr-12">
                             <SiTiktok size={30} />
                         </Link>
                     </div>
