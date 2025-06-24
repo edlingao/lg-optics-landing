@@ -39,9 +39,8 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Horarios</h4>
                         <div className="space-y-1 text-sm text-gray-300 mb-6">
-                            <p>Lunes - Viernes: 9:00 - 19:00</p>
-                            <p>Sábados: 9:00 - 18:00</p>
-                            <p>Domingos: 10:00 - 16:00</p>
+                            <p>Lunes - Viernes: 11:00AM - 6:00PM</p>
+                            <p>Sábados: 11:00PM - 3:00PM</p>
                         </div>
                         
                         <h4 className="text-lg font-semibold mb-4">Síguenos</h4>
