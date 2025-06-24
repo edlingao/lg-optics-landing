@@ -162,15 +162,6 @@ export default function Header() {
             Contacto
           </Link>
           <Link
-            href="/nosotros"
-            className={`text-lg hover:text-accent transition-colors duration-300 ${
-              activeLink === "/nosotros" ? "text-accent font-semibold" : ""
-            }`}
-            onClick={() => handleLinkClick("/nosotros")}
-          >
-            Nosotros
-          </Link>
-          <Link
             href="/ubicacion"
             className={`text-lg hover:text-accent transition-colors duration-300 ${
               activeLink === "/ubicacion" ? "text-accent font-semibold" : ""
