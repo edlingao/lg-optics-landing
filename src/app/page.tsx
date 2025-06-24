@@ -1,12 +1,19 @@
-import Banner from "./banner/page";
-import Hallmark from "./hallmark/page";
-
+import Hero from "../components/Hero";
+import Services from "../components/Services";
+import FeaturedProducts from "../components/FeaturedProducts";
+import WhyChooseUs from "../components/WhyChooseUs";
+import Brands from "../components/Brands";
+import LocationContact from "../components/LocationContact";
 
 export default function Home() {
   return (
     <>
-      <Banner />
-      <Hallmark />
+      <Hero />
+      <Services />
+      <FeaturedProducts />
+      <WhyChooseUs />
+      <Brands />
+      <LocationContact />
     </>
   );
 }
