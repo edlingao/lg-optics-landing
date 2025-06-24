@@ -1,40 +1,101 @@
+"use client";
+
 import { SiInstagram } from "react-icons/si";
 import { SiFacebook } from "react-icons/si";
 import { SiTiktok } from "react-icons/si";
 import Link from "next/link";
+import ClientOnly from "../../components/ClientOnly";
 
 export default function Footer() {
     return (
-        <>
-        
-            <footer className="flex sm:flex-col md:flex-row w-full h-auto sm:justify-start md:justify-between px-8 py-8 text-white font-bold bg-primary">
-                <div className="flex flex-col  ">
-                    <p className="font-roots text-3xl tracking-widest">
-                       ver Bien, <br />
-                        verse Bien, <br />
-                        sentirse Bien. <br />
-                    </p>
-                </div>
-                <div className="flex flex-col sm:mt-4 sm:mb-4">
-                    <h4 className="sm:text-start md:text-center text-lg" >Siguenos en nuestras redes sociales</h4>
-                    <div className="flex mt-4 w-full justify-center items-center sm:items-start sm:justify-start">
-                        <Link href="https://www.instagram.com/lg.optics" className="mr-12">
-                            <SiInstagram size={30}/>
-                        </Link>
-                        <Link href="https://www.facebook.com/profile.php?id=61571379852165" className="mr-12">
-                            <SiFacebook size={30} />
-                        </Link>
-                        <Link href="https://www.tiktok.com/@lg.optics?lang=es" className="mr-12">
-                            <SiTiktok size={30} />
-                        </Link>
+        <footer className="bg-navy-900 text-white py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    {/* Brand Section */}
+                    <div className="md:col-span-2">
+                        <h3 className="font-roots text-2xl md:text-3xl tracking-widest mb-4">
+                            Ver Bien, <br />
+                            Verse Bien, <br />
+                            Sentirse Bien.
+                        </h3>
+                        <p className="text-gray-300 text-sm max-w-md">
+                            L&G OPTICS - Tu destino confiable para el cuidado visual integral en Puebla. 
+                            Más de 10 años cuidando tu salud visual.
+                        </p>
+                    </div>
+                    
+                    {/* Contact Info */}
+                    <div>
+                        <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+                        <div className="space-y-2 text-sm text-gray-300">
+                            <p>📍 Calle 45 Sur #2910 Local 1 PB</p>
+                            <p>Nueva Antequera, Puebla 72180</p>
+                            <p>📞 (221) 337-4152</p>
+                            <p>✉️ info@lg-optics.com</p>
+                        </div>
+                    </div>
+                    
+                    {/* Hours & Social */}
+                    <div>
+                        <h4 className="text-lg font-semibold mb-4">Horarios</h4>
+                        <div className="space-y-1 text-sm text-gray-300 mb-6">
+                            <p>Lunes - Viernes: 9:00 - 19:00</p>
+                            <p>Sábados: 9:00 - 18:00</p>
+                            <p>Domingos: 10:00 - 16:00</p>
+                        </div>
+                        
+                        <h4 className="text-lg font-semibold mb-4">Síguenos</h4>
+                        <ClientOnly fallback={<div className="flex space-x-4 h-8"></div>}>
+                            <div className="flex space-x-4">
+                                <Link 
+                                    href="https://www.instagram.com/lg.optics" 
+                                    className="text-gray-300 hover:text-white transition-colors duration-300"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <SiInstagram size={24}/>
+                                </Link>
+                                <Link 
+                                    href="https://www.facebook.com/profile.php?id=61571379852165" 
+                                    className="text-gray-300 hover:text-white transition-colors duration-300"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <SiFacebook size={24} />
+                                </Link>
+                                <Link 
+                                    href="https://www.tiktok.com/@lg.optics?lang=es" 
+                                    className="text-gray-300 hover:text-white transition-colors duration-300"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <SiTiktok size={24} />
+                                </Link>
+                            </div>
+                        </ClientOnly>
                     </div>
                 </div>
-                <div className="flex flex-col">
-                    <h5 className="text-lg">Horario:</h5>
-                    <p>Lunes - Viernes 11:00 am - 19:00 pm</p>
-                    <p>Sabado 11:00 am - 16:00 pm</p>
+                
+                {/* Bottom Bar */}
+                <div className="border-t border-gray-700 mt-8 pt-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center">
+                        <p className="text-sm text-gray-400">
+                            © 2024 L&G OPTICS. Todos los derechos reservados.
+                        </p>
+                        <div className="flex space-x-6 mt-4 md:mt-0">
+                            <Link href="/productos" className="text-sm text-gray-400 hover:text-white transition-colors">
+                                Productos
+                            </Link>
+                            <Link href="/examenes-de-vista" className="text-sm text-gray-400 hover:text-white transition-colors">
+                                Exámenes
+                            </Link>
+                            <Link href="/contacto" className="text-sm text-gray-400 hover:text-white transition-colors">
+                                Contacto
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-            </footer>
-        </>
+            </div>
+        </footer>
     )
 }

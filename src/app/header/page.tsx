@@ -2,14 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TiThMenu } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
+import ClientOnly from "../../components/ClientOnly";
 
 export default function Header() {
   const logo = "/LG-OPTICS.png";
-  const [activeLink, setActiveLink] = useState("/");
+  const [activeLink, setActiveLink] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [,setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Set initial active link based on current path
+    if (typeof window !== 'undefined') {
+      setActiveLink(window.location.pathname);
+    }
+  }, []);
 
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
@@ -21,9 +31,9 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center w-full h-auto bg-primary px-6 py-4">
+    <header className="flex justify-between items-center w-full h-[10dvh] bg-navy-900 px-6 py-4 shadow-lg sticky top-0 z-50">
       <Link href="/" 
-        className={`ml-6 cursor-pointer hover:underline hover:underline-offset-4 ${
+        className={`h-full ml-6 cursor-pointer hover:underline hover:underline-offset-4 ${
         activeLink === "/" ? "font-bold" : ""
         }`}
         onClick={() => handleLinkClick("/")}
@@ -33,123 +43,152 @@ export default function Header() {
           width={200}
           height={200}
           alt="logo"
-          className="cursor-pointer sm:w-[180px] sm:h-[100px]"
+          className="cursor-pointer h-full object-contain"
         />
       </Link>
-      <nav className="hidden md:flex gap-8 text-white">
+      <ClientOnly fallback={<div className="hidden md:flex gap-8 text-white items-center h-6"></div>}>
+        <nav className="hidden md:flex gap-8 text-white items-center">
         <Link
-          href="/products"
-          className={`text-lg hover:underline hover:underline-offset-4 ${
-            activeLink === "/products" ? "font-bold underline underline-offset-4" : ""
+          href="/productos"
+          className={`text-lg hover:text-accent transition-colors duration-300 ${
+            activeLink === "/productos" ? "text-accent font-semibold" : ""
           }`}
-          onClick={() => handleLinkClick("/products")}
+          onClick={() => handleLinkClick("/productos")}
         >
           Productos
         </Link>
         <Link
-          href="/pricing"
-          className={`text-lg hover:underline hover:underline-offset-4 ${
-            activeLink === "/pricing" ? "font-bold underline underline-offset-4" : ""
+          href="/examenes-de-vista"
+          className={`text-lg hover:text-accent transition-colors duration-300 ${
+            activeLink === "/examenes-de-vista" ? "text-accent font-semibold" : ""
           }`}
-          onClick={() => handleLinkClick("/pricing")}
+          onClick={() => handleLinkClick("/examenes-de-vista")}
+        >
+          Exámenes
+        </Link>
+        <Link
+          href="/paquetes"
+          className={`text-lg hover:text-accent transition-colors duration-300 ${
+            activeLink === "/paquetes" ? "text-accent font-semibold" : ""
+          }`}
+          onClick={() => handleLinkClick("/paquetes")}
         >
           Paquetes
         </Link>
         <Link
-          href="/contact"
-          className={`text-lg hover:underline hover:underline-offset-4 ${
-            activeLink === "/contact" ? "font-bold underline underline-offset-4" : ""
+          href="/contacto"
+          className={`text-lg hover:text-accent transition-colors duration-300 ${
+            activeLink === "/contacto" ? "text-accent font-semibold" : ""
           }`}
-          onClick={() => handleLinkClick("/contact")}
+          onClick={() => handleLinkClick("/contacto")}
         >
           Contacto
         </Link>
         <Link
-          href="/us"
-          className={`text-lg hover:underline hover:underline-offset-4 ${
-            activeLink === "/us" ? "font-bold underline underline-offset-4" : ""
+          href="/ubicacion"
+          className={`text-lg hover:text-accent transition-colors duration-300 ${
+            activeLink === "/ubicacion" ? "text-accent font-semibold" : ""
           }`}
-          onClick={() => handleLinkClick("/us")}
-        >
-          Sobre Nosotros
-        </Link>
-        <Link
-          href="/location"
-          className={`text-lg hover:underline hover:underline-offset-4 ${
-            activeLink === "/location" ? "font-bold underline underline-offset-4" : ""
-          }`}
-          onClick={() => handleLinkClick("/location")}
+          onClick={() => handleLinkClick("/ubicacion")}
         >
           Ubicación
         </Link>
-      </nav>
+        <Link
+          href="/contacto"
+          className="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+          onClick={() => handleLinkClick("/contacto")}
+        >
+          Agendar Cita
+        </Link>
+        </nav>
+      </ClientOnly>
 
-      <button
-        className="text-white text-3xl md:hidden"
-        onClick={toggleMenu}
-      >
-        <TiThMenu size={35} />
-      </button>
+      <ClientOnly fallback={<div className="w-9 h-9 md:hidden"></div>}>
+        <button
+          className="text-white text-3xl md:hidden"
+          onClick={toggleMenu}
+        >
+          <TiThMenu size={35} />
+        </button>
+      </ClientOnly>
 
-      <div
-        className={`fixed top-0 right-0 h-full w-3/4 max-w-xs bg-primary text-white z-50 transform ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
-      >
+      <ClientOnly>
+        <div
+          className={`fixed top-0 right-0 h-full w-3/4 max-w-xs bg-navy-900 text-white z-50 transform ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
+          } transition-transform duration-300 ease-in-out shadow-2xl`}
+        >
         <button
           className="absolute top-4 right-4 text-3xl"
           onClick={toggleMenu}
         >
           <IoMdClose />
         </button>
-        <nav className="flex flex-col items-center justify-center h-full gap-6">
+        <nav className="flex flex-col items-center justify-center h-full gap-6 px-6">
           <Link
-            href="/products"
-            className={`text-lg hover:underline hover:underline-offset-4 ${
-              activeLink === "/products" ? "font-bold underline underline-offset-4" : ""
+            href="/productos"
+            className={`text-lg hover:text-accent transition-colors duration-300 ${
+              activeLink === "/productos" ? "text-accent font-semibold" : ""
             }`}
-            onClick={() => handleLinkClick("/products")}
+            onClick={() => handleLinkClick("/productos")}
           >
             Productos
           </Link>
           <Link
-            href="/pricing"
-            className={`text-lg hover:underline hover:underline-offset-4 ${
-              activeLink === "/pricing" ? "font-bold underline underline-offset-4" : ""
+            href="/examenes-de-vista"
+            className={`text-lg hover:text-accent transition-colors duration-300 ${
+              activeLink === "/examenes-de-vista" ? "text-accent font-semibold" : ""
             }`}
-            onClick={() => handleLinkClick("/pricing")}
+            onClick={() => handleLinkClick("/examenes-de-vista")}
+          >
+            Exámenes
+          </Link>
+          <Link
+            href="/paquetes"
+            className={`text-lg hover:text-accent transition-colors duration-300 ${
+              activeLink === "/paquetes" ? "text-accent font-semibold" : ""
+            }`}
+            onClick={() => handleLinkClick("/paquetes")}
           >
             Paquetes
           </Link>
           <Link
-            href="/contact"
-            className={`text-lg hover:underline hover:underline-offset-4 ${
-              activeLink === "/contact" ? "font-bold underline underline-offset-4" : ""
+            href="/contacto"
+            className={`text-lg hover:text-accent transition-colors duration-300 ${
+              activeLink === "/contacto" ? "text-accent font-semibold" : ""
             }`}
-            onClick={() => handleLinkClick("/contact")}
+            onClick={() => handleLinkClick("/contacto")}
           >
             Contacto
           </Link>
           <Link
-            href="/us"
-            className={`text-lg hover:underline hover:underline-offset-4 ${
-              activeLink === "/us" ? "font-bold underline underline-offset-4" : ""
+            href="/nosotros"
+            className={`text-lg hover:text-accent transition-colors duration-300 ${
+              activeLink === "/nosotros" ? "text-accent font-semibold" : ""
             }`}
-            onClick={() => handleLinkClick("/us")}
+            onClick={() => handleLinkClick("/nosotros")}
           >
-            Sobre Nosotros
+            Nosotros
           </Link>
           <Link
-            href="/location"
-            className={`text-lg hover:underline hover:underline-offset-4 ${
-              activeLink === "/location" ? "font-bold underline underline-offset-4" : ""
+            href="/ubicacion"
+            className={`text-lg hover:text-accent transition-colors duration-300 ${
+              activeLink === "/ubicacion" ? "text-accent font-semibold" : ""
             }`}
-            onClick={() => handleLinkClick("/location")}
+            onClick={() => handleLinkClick("/ubicacion")}
           >
             Ubicación
           </Link>
+          <Link
+            href="/contacto"
+            className="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 mt-4"
+            onClick={() => handleLinkClick("/contacto")}
+          >
+            Agendar Cita
+          </Link>
         </nav>
-      </div>
+        </div>
+      </ClientOnly>
     </header>
   );
 }
