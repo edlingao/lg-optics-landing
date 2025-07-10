@@ -9,7 +9,7 @@ export default function Services() {
       icon: "👁️‍🗨️",
       features: ["Refracción visual", "Examen de retina", "Detección temprana de enfermedades"],
       link: "/examenes-de-vista",
-      image: "/man-holding-glasses.jpeg"
+      image: "/IMG_2537.jpg"
     },
     {
       title: "Lentes Oftálmicos",
@@ -17,7 +17,7 @@ export default function Services() {
       icon: "🤓",
       features: ["Lentes progresivos", "Antirreflejantes", "Fotocromáticos"],
       link: "/productos",
-      image: "/computer-glasses.jpg"
+      image: "/IMG_3589.jpg"
     },
     {
       title: "Armazones Premium",
@@ -25,7 +25,7 @@ export default function Services() {
       icon: "👓",
       features: ["Marcas reconocidas", "Diseños modernos", "Materiales de calidad"],
       link: "/productos",
-      image: "/bety-1.png"
+     image: "/IMG_2320.jpg"
     }
   ];
 
@@ -38,7 +38,7 @@ export default function Services() {
             Nuestros Servicios Especializados
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            En L&G OPTICS Puebla ofrecemos servicios integrales para el cuidado de tu visión, 
+            En L&G OPTICS ofrecemos servicios integrales para el cuidado de tu visión, 
             adaptados a las necesidades de toda la familia.
           </p>
         </div>
