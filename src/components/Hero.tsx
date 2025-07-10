@@ -21,7 +21,7 @@ export default function Hero() {
           
           <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
             En L&G OPTICS Puebla somos expertos en lentes oftálmicos y exámenes de vista profesionales. 
-            Ubicados en Nueva Antequera con más de 10 años cuidando tu salud visual.
+            Ubicados en Nueva Antequera, estamos comprometidos con el cuidado de tu visión.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -46,7 +46,7 @@ export default function Hero() {
                 <span className="text-2xl">👁️</span>
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">Exámenes Profesionales</h3>
-              <p className="text-gray-300 text-sm">Tecnología moderna para diagnósticos precisos</p>
+              <p className="text-gray-300 text-sm">Tecnología moderna para exámenes visuales precisos</p>
             </div>
             
             <div className="text-center">
