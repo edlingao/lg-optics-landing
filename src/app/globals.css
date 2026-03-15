@@ -48,7 +48,6 @@
   --primary-600: #2563eb;
   --primary-800: #1e40af;
   --navy-900: #1e3a8a;
-  --accent: #f59e0b;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
 }
@@ -56,19 +55,40 @@
 /* Component utilities */
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105;
+    @apply bg-navy-900 hover:bg-navy-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300;
   }
-  
+
   .btn-secondary {
+    @apply bg-transparent border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+  }
+
+  .btn-outline-white {
     @apply bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy-900 px-6 py-3 rounded-lg font-semibold transition-all duration-300;
   }
-  
+
+  .btn-whatsapp {
+    @apply bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+  }
+
   .card {
     @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2;
   }
-  
+
   .gradient-bg {
     @apply bg-gradient-to-br from-navy-900 to-primary-800;
+  }
+
+  /* Subtle glassmorphism for Apple-like design */
+  .glass {
+    @apply backdrop-blur-md bg-white/60 border border-white/30;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-md bg-navy-900/70 border border-white/10;
+  }
+
+  .glass-light {
+    @apply backdrop-blur-md bg-white/60 border border-white/30;
   }
 }
 
@@ -112,6 +132,16 @@ img {
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
+
+  /* Hide scrollbar for category tabs */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Loading states */
@@ -128,6 +158,27 @@ img {
   100% {
     background-position: -200% 0;
   }
+}
+
+/* WhatsApp button pulse animation */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.whatsapp-pulse {
+  position: relative;
+}
+
+.whatsapp-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: #25d366;
+  animation: pulse-ring 3s ease-in-out infinite;
+  z-index: -1;
 }
 
 /* Mobile optimizations */

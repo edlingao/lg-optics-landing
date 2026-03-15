@@ -5,25 +5,28 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { TiThMenu } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
+import { BsWhatsapp, BsTelephoneFill } from "react-icons/bs";
 import ClientOnly from "../../components/ClientOnly";
 
 export default function Header() {
   const logo = "/LG-OPTICS.png";
   const [activeLink, setActiveLink] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [,setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    // Set initial active link based on current path
     if (typeof window !== 'undefined') {
       setActiveLink(window.location.pathname);
     }
+
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
-    setMenuOpen(false); // Cierra el menú en móviles al hacer clic
+    setMenuOpen(false);
   };
 
   const toggleMenu = () => {
@@ -31,104 +34,29 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center w-full h-[10dvh] bg-navy-900 px-6 py-4 shadow-lg sticky top-0 z-50">
-      <Link href="/" 
-        className={`h-full ml-6 cursor-pointer hover:underline hover:underline-offset-4 ${
-        activeLink === "/" ? "font-bold" : ""
-        }`}
+    <>
+    <header className={`flex justify-between items-center w-full h-[10dvh] px-6 py-4 sticky top-0 z-50 transition-all duration-300 ${
+      scrolled ? 'backdrop-blur-md bg-navy-900/90 shadow-lg' : 'bg-navy-900'
+    }`}>
+      <Link href="/"
+        className="h-full ml-6 cursor-pointer"
         onClick={() => handleLinkClick("/")}
       >
         <Image
           src={logo}
           width={200}
           height={200}
-          alt="logo"
+          alt="L&G OPTICS logo"
           className="cursor-pointer h-full object-contain"
         />
       </Link>
+
       <ClientOnly fallback={<div className="hidden md:flex gap-8 text-white items-center h-6"></div>}>
-        <nav className="hidden md:flex gap-8 text-white items-center">
-        <Link
-          href="/productos"
-          className={`text-lg hover:text-accent transition-colors duration-300 ${
-            activeLink === "/productos" ? "text-accent font-semibold" : ""
-          }`}
-          onClick={() => handleLinkClick("/productos")}
-        >
-          Productos
-        </Link>
-        <Link
-          href="/examenes-de-vista"
-          className={`text-lg hover:text-accent transition-colors duration-300 ${
-            activeLink === "/examenes-de-vista" ? "text-accent font-semibold" : ""
-          }`}
-          onClick={() => handleLinkClick("/examenes-de-vista")}
-        >
-          Exámenes
-        </Link>
-        <Link
-          href="/paquetes"
-          className={`text-lg hover:text-accent transition-colors duration-300 ${
-            activeLink === "/paquetes" ? "text-accent font-semibold" : ""
-          }`}
-          onClick={() => handleLinkClick("/paquetes")}
-        >
-          Paquetes
-        </Link>
-        <Link
-          href="/contacto"
-          className={`text-lg hover:text-accent transition-colors duration-300 ${
-            activeLink === "/contacto" ? "text-accent font-semibold" : ""
-          }`}
-          onClick={() => handleLinkClick("/contacto")}
-        >
-          Contacto
-        </Link>
-        <Link
-          href="/ubicacion"
-          className={`text-lg hover:text-accent transition-colors duration-300 ${
-            activeLink === "/ubicacion" ? "text-accent font-semibold" : ""
-          }`}
-          onClick={() => handleLinkClick("/ubicacion")}
-        >
-          Ubicación
-        </Link>
-        <Link
-          href="/contacto"
-          className="bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
-          onClick={() => handleLinkClick("/contacto")}
-        >
-          Agendar Cita
-        </Link>
-        </nav>
-      </ClientOnly>
-
-      <ClientOnly fallback={<div className="w-9 h-9 md:hidden"></div>}>
-        <button
-          className="text-white text-3xl md:hidden"
-          onClick={toggleMenu}
-        >
-          <TiThMenu size={35} />
-        </button>
-      </ClientOnly>
-
-      <ClientOnly>
-        <div
-          className={`fixed top-0 right-0 h-full w-3/4 max-w-xs bg-navy-900 text-white z-50 transform ${
-            menuOpen ? "translate-x-0" : "translate-x-full"
-          } transition-transform duration-300 ease-in-out shadow-2xl`}
-        >
-        <button
-          className="absolute top-4 right-4 text-3xl"
-          onClick={toggleMenu}
-        >
-          <IoMdClose />
-        </button>
-        <nav className="flex flex-col items-center justify-center h-full gap-6 px-6">
+        <nav className="hidden md:flex gap-8 text-white items-center font-sans">
           <Link
             href="/productos"
-            className={`text-lg hover:text-accent transition-colors duration-300 ${
-              activeLink === "/productos" ? "text-accent font-semibold" : ""
+            className={`text-lg transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/productos" ? "underline underline-offset-4 font-semibold" : ""
             }`}
             onClick={() => handleLinkClick("/productos")}
           >
@@ -136,26 +64,26 @@ export default function Header() {
           </Link>
           <Link
             href="/examenes-de-vista"
-            className={`text-lg hover:text-accent transition-colors duration-300 ${
-              activeLink === "/examenes-de-vista" ? "text-accent font-semibold" : ""
+            className={`text-lg transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/examenes-de-vista" ? "underline underline-offset-4 font-semibold" : ""
             }`}
             onClick={() => handleLinkClick("/examenes-de-vista")}
           >
             Exámenes
           </Link>
           <Link
-            href="/paquetes"
-            className={`text-lg hover:text-accent transition-colors duration-300 ${
-              activeLink === "/paquetes" ? "text-accent font-semibold" : ""
+            href="/pricing"
+            className={`text-lg transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/pricing" ? "underline underline-offset-4 font-semibold" : ""
             }`}
-            onClick={() => handleLinkClick("/paquetes")}
+            onClick={() => handleLinkClick("/pricing")}
           >
             Paquetes
           </Link>
           <Link
             href="/contacto"
-            className={`text-lg hover:text-accent transition-colors duration-300 ${
-              activeLink === "/contacto" ? "text-accent font-semibold" : ""
+            className={`text-lg transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/contacto" ? "underline underline-offset-4 font-semibold" : ""
             }`}
             onClick={() => handleLinkClick("/contacto")}
           >
@@ -163,8 +91,8 @@ export default function Header() {
           </Link>
           <Link
             href="/ubicacion"
-            className={`text-lg hover:text-accent transition-colors duration-300 ${
-              activeLink === "/ubicacion" ? "text-accent font-semibold" : ""
+            className={`text-lg transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/ubicacion" ? "underline underline-offset-4 font-semibold" : ""
             }`}
             onClick={() => handleLinkClick("/ubicacion")}
           >
@@ -172,14 +100,119 @@ export default function Header() {
           </Link>
           <Link
             href="/contacto"
-            className="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 mt-4"
+            className="btn-outline-white"
             onClick={() => handleLinkClick("/contacto")}
           >
             Agendar Cita
           </Link>
         </nav>
-        </div>
+      </ClientOnly>
+
+      <ClientOnly fallback={<div className="w-9 h-9 md:hidden"></div>}>
+        <button
+          className="text-white text-3xl md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center"
+          onClick={toggleMenu}
+          aria-label="Abrir menú"
+        >
+          <TiThMenu size={35} />
+        </button>
       </ClientOnly>
     </header>
+
+    <ClientOnly>
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 z-[60] md:hidden"
+          onClick={toggleMenu}
+        />
+      )}
+      <div
+        className={`fixed top-0 right-0 h-full w-3/4 max-w-xs backdrop-blur-xl bg-navy-900/95 text-white z-[70] transform ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out shadow-2xl md:hidden`}
+      >
+        <button
+          className="absolute top-4 right-4 text-3xl min-w-[44px] min-h-[44px] flex items-center justify-center"
+          onClick={toggleMenu}
+          aria-label="Cerrar menú"
+        >
+          <IoMdClose />
+        </button>
+        <nav className="flex flex-col items-center justify-center h-full gap-4 px-6">
+          <Link
+            href="/productos"
+            className={`text-lg py-3 min-h-[48px] flex items-center transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/productos" ? "underline underline-offset-4 font-semibold" : ""
+            }`}
+            onClick={() => handleLinkClick("/productos")}
+          >
+            Productos
+          </Link>
+          <Link
+            href="/examenes-de-vista"
+            className={`text-lg py-3 min-h-[48px] flex items-center transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/examenes-de-vista" ? "underline underline-offset-4 font-semibold" : ""
+            }`}
+            onClick={() => handleLinkClick("/examenes-de-vista")}
+          >
+            Exámenes
+          </Link>
+          <Link
+            href="/pricing"
+            className={`text-lg py-3 min-h-[48px] flex items-center transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/pricing" ? "underline underline-offset-4 font-semibold" : ""
+            }`}
+            onClick={() => handleLinkClick("/pricing")}
+          >
+            Paquetes
+          </Link>
+          <Link
+            href="/contacto"
+            className={`text-lg py-3 min-h-[48px] flex items-center transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/contacto" ? "underline underline-offset-4 font-semibold" : ""
+            }`}
+            onClick={() => handleLinkClick("/contacto")}
+          >
+            Contacto
+          </Link>
+          <Link
+            href="/ubicacion"
+            className={`text-lg py-3 min-h-[48px] flex items-center transition-colors duration-300 hover:opacity-80 ${
+              activeLink === "/ubicacion" ? "underline underline-offset-4 font-semibold" : ""
+            }`}
+            onClick={() => handleLinkClick("/ubicacion")}
+          >
+            Ubicación
+          </Link>
+          <Link
+            href="/contacto"
+            className="btn-outline-white mt-4"
+            onClick={() => handleLinkClick("/contacto")}
+          >
+            Agendar Cita
+          </Link>
+
+          <div className="flex gap-6 mt-8 pt-6 border-t border-white/20">
+            <Link
+              href="https://wa.me/522213374152"
+              className="min-w-[48px] min-h-[48px] flex items-center justify-center bg-green-500 rounded-full"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <BsWhatsapp size={24} />
+            </Link>
+            <Link
+              href="tel:+522213374152"
+              className="min-w-[48px] min-h-[48px] flex items-center justify-center bg-white/20 rounded-full"
+              aria-label="Llamar"
+            >
+              <BsTelephoneFill size={20} />
+            </Link>
+          </div>
+        </nav>
+      </div>
+    </ClientOnly>
+    </>
   );
 }
