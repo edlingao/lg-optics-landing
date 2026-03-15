@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./header/page";
 import Footer from "./footer/page";
 import WhatsappButton from "./whatsapp-button/page";
+import ContactModalTrigger from "../components/ContactModalTrigger";
 import Script from "next/script";
 
 
@@ -14,10 +15,13 @@ export const metadata: Metadata = {
   creator: "L&G OPTICS",
   publisher: "L&G OPTICS",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://www.lg-optics.com",
+  },
   openGraph: {
     title: "L&G OPTICS Puebla - Lentes y Exámenes de Vista",
     description: "Expertos en lentes oftálmicos y exámenes de vista en Puebla. Ubicados en Nueva Antequera con tecnología moderna.",
-    url: "https://lg-optics.com",
+    url: "https://www.lg-optics.com",
     siteName: "L&G OPTICS",
     images: [
       {
@@ -58,12 +62,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
+              "@type": "Optician",
               "name": "L&G OPTICS",
-              "image": "https://lg-optics.com/lg-optics-logo.png",
-              "@id": "https://lg-optics.com",
-              "url": "https://lg-optics.com",
+              "image": "https://www.lg-optics.com/lg-optics-logo.png",
+              "@id": "https://www.lg-optics.com",
+              "url": "https://www.lg-optics.com",
               "telephone": "+52-221-337-4152",
+              "email": "info@lg-optics.com",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Calle 45 Sur #2910 Local 1 PB",
@@ -77,25 +82,26 @@ export default function RootLayout({
                 "latitude": 19.0414,
                 "longitude": -98.2063
               },
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday"
-                ],
-                "opens": "09:00",
-                "closes": "19:00"
-              },
+              "areaServed": "Puebla",
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  "opens": "11:00",
+                  "closes": "18:00"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Saturday"],
+                  "opens": "11:00",
+                  "closes": "15:00"
+                }
+              ],
               "sameAs": [
                 "https://www.facebook.com/lgoptics",
                 "https://www.instagram.com/lgoptics"
               ],
               "priceRange": "$$",
-              "servesCuisine": "Optical Services",
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Servicios de Óptica",
@@ -125,6 +131,7 @@ export default function RootLayout({
         <main className="flex-1">
           {children}
         </main>
+        <ContactModalTrigger />
         <WhatsappButton />
         <Footer />
       </body>
