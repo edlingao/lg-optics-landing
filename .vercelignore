@@ -1,0 +1,6 @@
+.env*
+.agents
+reports
+.git
+node_modules
+.next

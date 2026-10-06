@@ -2,9 +2,15 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "lg-optics.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "lg-optics.com"
+        }
+      ],
       "destination": "https://www.lg-optics.com/:path*",
       "permanent": true
     }
-  ]
+  ],
+  "installCommand": "npm ci"
 }

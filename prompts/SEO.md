@@ -1,3 +1,23 @@
+# SEO implementation and follow-up
+
+The public baseline audit is dated October 5, 2026: `reports/seo-audit-2026-10-05/report.html`. It includes page-by-page evidence, Jev scoring and the prioritized implementation plan. Earlier Search Console figures below were supplied historically; they were not independently verified in this audit.
+
+The current implementation adds crawlable navigation, route-specific metadata, robots/sitemap, a generated social image, server-rendered business schema and breadcrumbs, permanent legacy redirects, responsive image optimization, a shorter mobile hero, click-to-load maps, shared business data, clearer MXN pricing and a phone-first contact API with honest delivery errors. Unsupported experience, counters, clinical certifications and health-benefit claims were removed. The contact success event indicates provider acceptance only; there is no durable lead database.
+
+Remaining account/owner work:
+
+1. Confirm the existing Maps place, store hours, service scope, current prices and package conditions. Supply real practitioner names/credentials and original storefront/team photos before adding those claims.
+2. Verify Search Console ownership, submit `/sitemap.xml`, inspect canonical URLs and export a dated query/page/device baseline. Public crawl checks cannot prove Google indexing or selected canonicals.
+3. Configure and verify optional GA4 with consent and safe event parameters. Record WhatsApp, phone and direction clicks as intent; distinguish accepted inquiries and confirmed appointments. Never send names, phones or message text to analytics.
+4. Review Google Business Profile pin/category/hours/services and add tagged website/appointment links. Seek honest reviews from actual customers without incentives or filtering.
+5. Compare matched 28-day periods for qualified inquiries and non-brand local queries. Build new service pages only when demand and original, verified information support them.
+6. Validate email provider configuration and business inbox receipt using an owner-approved test. Browser smoke tests deliberately mock outbound delivery.
+7. Field Core Web Vitals, account metrics, backlinks and ranking changes remain unverified until their data is available. Lighthouse is a simulated lab measurement.
+
+Google ended FAQ rich results on May 7, 2026; visible helpful questions remain useful, but FAQ schema should not be sold as a rich-result opportunity. See https://developers.google.com/search/updates.
+
+# Historical March 2026 notes — not current verification
+
 # L&G OPTICS (lg-optics.com) — SEO Fixes
 
 Site: https://www.lg-optics.com/  

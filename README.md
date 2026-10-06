@@ -1,39 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# L&G OPTICS
 
-## Getting Started
+Spanish-language landing site for L&G OPTICS in Nueva Antequera, Puebla. Built with Next.js App Router, React and Tailwind. Production: https://www.lg-optics.com.
 
-First, run the development server:
+## Development and checks
 
-```bash
+Use npm and the committed `package-lock.json` (Vercel runs `npm ci`).
+
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm test
+npm run build
+npm run typecheck
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm test` verifies the phone-first contact contract, invalid requests and honest delivery failure handling without sending email. A successful provider response means the business notification was accepted for delivery, not that a message was read or an appointment was booked.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Store local secrets in ignored `.env.local`; configure production values in the existing Vercel project. Never commit secrets.
 
-## Learn More
+- `SENDGRID_API_KEY`: server-only SendGrid credential.
+- `ADMIN_EMAIL`: inbox receiving inquiries.
+- `FROM_EMAIL`: verified SendGrid sender; retains the existing `info@lg-optics.com` default if omitted. The API key and recipient are required. Missing configuration or rejected delivery returns an honest 503 and the UI retains the inquiry with a WhatsApp alternative.
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`: optional GA4 ID (`G-…`). Analytics only loads after consent. Without it, no analytics script or consent banner appears. Disable Enhanced Measurement's automatic form, outbound-click and history page-view tracking in GA4 to avoid duplicate events or sending unsanitized URLs. Verify DebugView before counting conversions.
+- `TYPESAFE_API_KEY`: local audit tooling only. The website does not use or expose it.
 
-To learn more about Next.js, take a look at the following resources:
+Business name, phone, hours, address, existing Maps place reference and social profiles are centralized in `src/lib/business.ts`. Catalog, exams and packages have separate typed data files. Verify business claims, current availability and prices with the owner before adding new facts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## SEO and release
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Canonical pages are `/`, `/productos`, `/examenes-de-vista`, `/pricing`, `/contacto`, `/ubicacion` and `/nosotros`. `/privacidad` is linked but noindex. Metadata routes generate robots, sitemap and a working social image. Old equivalent routes redirect permanently; component-only URLs return 404.
 
-## Deploy on Vercel
+The baseline audit and implementation plan are in `reports/seo-audit-2026-10-05/`. Reports, skills and local environment files are excluded from Vercel uploads by `.vercelignore`. Consult `prompts/SEO.md` for follow-up work requiring account access or verified business facts.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# lg-optics-landing
-# lg-optics-landing
-# lg-optics-landing
+Deploy to the existing Vercel project, retaining the previous production deployment as the rollback target. After deployment, verify HTTP status, redirects, canonicals, JSON-LD, sitemap, social image, responsive layout and contact errors against the production domain. Do not submit test inquiries to the business without explicit authorization. Monitor real indexing in Search Console and real leads separately from Lighthouse scores.

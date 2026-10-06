@@ -5,7 +5,7 @@ export { default as AdminNotificationEmail } from './AdminNotification';
 // Export types for email props
 export interface ContactFormData {
   userName: string;
-  userEmail: string;
+  userEmail?: string;
   userPhone: string;
   userMessage?: string;
   serviceRequested: string;
