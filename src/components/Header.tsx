@@ -1,4 +1,5 @@
 "use client";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -34,7 +35,7 @@ export default function Header() {
       <nav aria-label="Navegación móvil" className="flex flex-col gap-2 font-sans mt-6">
         {navigation.map(item => <Link key={item.href} href={item.href} onClick={close} aria-current={pathname === item.href ? "page" : undefined} className="px-3 py-3 rounded hover:bg-white/10 aria-[current=page]:underline">{item.label}</Link>)}
         <Link href="/contacto" onClick={close} className="btn-outline-white text-center mt-3">Agendar cita</Link>
-        <a href={whatsappUrl()} className="btn-whatsapp text-center mt-3">WhatsApp</a>
+        <a href={whatsappUrl()} className="btn-whatsapp text-center mt-3"><WhatsAppIcon /><span>WhatsApp</span></a>
         <a href={`tel:${business.phone}`} className="text-center py-3 underline">{business.phoneLabel}</a>
       </nav>
     </dialog>

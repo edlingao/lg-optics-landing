@@ -1,4 +1,5 @@
 "use client";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Link from "next/link";
 import { useRef, useState, type FormEvent } from "react";
 import { validateContact, serviceLabels, type ContactInput } from "@/lib/contact";
@@ -55,7 +56,7 @@ export default function ContactForm() {
     <button type="submit" disabled={pending} className="btn-primary w-full min-h-12 disabled:opacity-60">{pending ? "Enviando…" : "Enviar Mensaje"}</button>
     <p className="text-sm text-gray-600">* Campos obligatorios</p>
     {status && <div role={status.success ? "status" : "alert"} className={`rounded-lg p-4 ${status.success ? "bg-green-50 text-green-900" : "bg-red-50 text-red-900"}`}>
-      <p>{status.message}</p>{!status.success && <a href={whatsappUrl()} className="inline-block mt-3 underline font-semibold">Contactar por WhatsApp</a>}
+      <p>{status.message}</p>{!status.success && <a href={whatsappUrl()} className="inline-flex mt-3 underline font-semibold inline-flex items-center justify-center gap-2"><WhatsAppIcon /><span>Contactar por WhatsApp</span></a>}
     </div>}
   </form>;
 }

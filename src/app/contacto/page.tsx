@@ -1,3 +1,4 @@
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import GoogleMap from "@/components/GoogleMap";
@@ -11,7 +12,7 @@ const faqs = [
 ];
 export default function ContactoPage() {
   return <>
-    <section className="bg-navy-900 text-white py-12 md:py-16 text-center px-5"><h1 className="font-roots text-3xl md:text-5xl">Contacto y citas en Puebla</h1><p className="mt-4 max-w-2xl mx-auto text-blue-50">Consulta disponibilidad de exámenes, lentes y armazones con nuestro equipo.</p><div className="flex flex-wrap gap-3 justify-center mt-6"><a href={`tel:${business.phone}`} className="btn-outline-white">Llamar: {business.phoneLabel}</a><a href={whatsappUrl()} className="btn-whatsapp">WhatsApp</a></div></section>
+    <section className="bg-navy-900 text-white py-12 md:py-16 text-center px-5"><h1 className="font-roots text-3xl md:text-5xl">Contacto y citas en Puebla</h1><p className="mt-4 max-w-2xl mx-auto text-blue-50">Consulta disponibilidad de exámenes, lentes y armazones con nuestro equipo.</p><div className="flex flex-wrap gap-3 justify-center mt-6"><a href={`tel:${business.phone}`} className="btn-outline-white">Llamar: {business.phoneLabel}</a><a href={whatsappUrl()} className="btn-whatsapp"><WhatsAppIcon /><span>WhatsApp</span></a></div></section>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid lg:grid-cols-2 gap-10">
       <section className="border border-gray-200 rounded-2xl p-6 md:p-8"><h2 className="font-roots text-3xl text-navy-900 mb-5">Envíanos un mensaje</h2><ContactForm /></section>
       <section><h2 className="font-roots text-3xl text-navy-900 mb-5">Visítanos</h2><p className="text-gray-700 mb-5">{business.address}</p><GoogleMap height={300} /><h3 className="text-xl font-semibold text-navy-900 mt-6 mb-2">Horario de atención</h3>{business.hours.map(line => <p key={line}>{line}</p>)}<p className="mt-4"><a href={`mailto:${business.email}`} className="underline">{business.email}</a></p><Link href="/ubicacion" className="underline inline-block mt-3">Ver dirección y cómo llegar</Link></section>

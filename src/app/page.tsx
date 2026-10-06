@@ -4,6 +4,7 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Brands from "../components/Brands";
 import LocationContact from "../components/LocationContact";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Services />
       <FeaturedProducts />
       <WhyChooseUs />
+      <Testimonials />
       <Brands />
       <LocationContact />
     </>

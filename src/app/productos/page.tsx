@@ -1,3 +1,4 @@
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -14,7 +15,7 @@ export default function ProductosPage() {
       <h2 className="font-roots text-3xl md:text-4xl text-navy-900 text-center">{c.name}</h2><p className="max-w-2xl mx-auto text-center text-gray-700 mt-4 mb-8">{c.description}</p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">{c.items.map(p => <article key={p.name} className="rounded-2xl bg-white border border-gray-200 overflow-hidden flex flex-col">
         <div className="relative h-56 bg-gray-50"><Image src={p.image} alt={`Ejemplo de ${p.name.toLowerCase()}`} fill sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 45vw, 380px" className="object-contain p-6" /></div>
-        <div className="p-6 flex flex-col flex-1"><h3 className="text-xl font-semibold text-navy-900">{p.name}</h3><p className="text-2xl font-semibold text-navy-900 my-3">Desde {formatPrice(p.from)} <span className="text-sm">MXN</span></p><p className="text-gray-700 mb-6">{p.detail}</p><a href={whatsappUrl(`Hola, me interesa cotizar ${p.name}. ¿Qué incluye y qué modelos tienen disponibles?`)} className="btn-primary text-center mt-auto" aria-label={`Cotizar por WhatsApp: ${p.name}`}>Cotizar por WhatsApp</a></div>
+        <div className="p-6 flex flex-col flex-1"><h3 className="text-xl font-semibold text-navy-900">{p.name}</h3><p className="text-2xl font-semibold text-navy-900 my-3">Desde {formatPrice(p.from)} <span className="text-sm">MXN</span></p><p className="text-gray-700 mb-6">{p.detail}</p><a href={whatsappUrl(`Hola, me interesa cotizar ${p.name}. ¿Qué incluye y qué modelos tienen disponibles?`)} className="btn-primary text-center mt-auto inline-flex items-center justify-center gap-2" aria-label={`Cotizar por WhatsApp: ${p.name}`}><WhatsAppIcon /><span>Cotizar por WhatsApp</span></a></div>
       </article>)}</div>
     </div></section>)}
     <section className="max-w-3xl mx-auto px-5 py-14"><h2 className="font-roots text-3xl text-navy-900 mb-5">Antes de elegir tus lentes</h2><ul className="list-disc pl-5 space-y-3 text-gray-700"><li>Consulta la medida, material y ajuste del armazón.</li><li>Confirma qué incluye el precio y si tu graduación modifica la cotización.</li><li>Pregunta por las condiciones de garantía, adaptación y entrega de tu pedido.</li></ul><div className="flex flex-wrap gap-4 mt-6"><Link href="/pricing" className="underline text-navy-900">Comparar paquetes con armazón</Link><Link href="/examenes-de-vista" className="underline text-navy-900">Consultar exámenes de vista</Link></div></section>

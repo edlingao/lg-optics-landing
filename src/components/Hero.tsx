@@ -1,3 +1,4 @@
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
 import { business, whatsappUrl } from "@/lib/business";
@@ -9,7 +10,7 @@ export default function Hero() {
       <h1 className="font-roots text-3xl sm:text-4xl md:text-6xl leading-tight max-w-4xl mx-auto">Óptica en Puebla: lentes y examen de vista</h1>
       <p className="text-base md:text-xl text-blue-50 mt-5 max-w-2xl mx-auto">Encuentra lentes para tu día a día y consulta tu graduación en L&amp;G OPTICS. Te esperamos en {business.neighborhood}.</p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center mt-7">
-        <a href={whatsappUrl()} className="btn-whatsapp">Consultar por WhatsApp</a>
+        <a href={whatsappUrl()} className="btn-whatsapp"><WhatsAppIcon /><span>Consultar por WhatsApp</span></a>
         <Link href="/contacto" className="btn-outline-white">Agendar examen de vista</Link>
       </div>
       <p className="text-sm text-blue-100 mt-5">{business.streetAddress} · <Link href="/ubicacion" className="underline">Cómo llegar</Link></p>
