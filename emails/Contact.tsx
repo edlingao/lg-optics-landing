@@ -10,6 +10,9 @@ export interface ContactFormData {
   userMessage?: string;
   serviceRequested: string;
   submittedAt?: string;
+  preferredDay?: string;
+  preferredTime?: string;
+  source?: string;
 }
 
 // Email template functions

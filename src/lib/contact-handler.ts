@@ -1,4 +1,4 @@
-import { validateContact, serviceLabels } from "./contact";
+import { validateContact, serviceLabels, timeLabels, sourceLabels, formatDay } from "./contact";
 import type { ContactFormData } from "../../emails/Contact";
 
 type Delivery = { success: boolean };
@@ -24,6 +24,9 @@ export function createContactHandler(deps: {
         userName: data.nombre, userPhone: data.telefono,
         serviceRequested: serviceLabels[data.servicio as keyof typeof serviceLabels] || "Consulta general",
         userMessage: data.mensaje,
+        preferredDay: data.dia ? formatDay(data.dia) : undefined,
+        preferredTime: timeLabels[data.horario as keyof typeof timeLabels],
+        source: sourceLabels[data.origen as keyof typeof sourceLabels],
         submittedAt: new Date().toLocaleString("es-MX", { timeZone: "America/Mexico_City" }),
       });
       if (!result.success) return unavailable();

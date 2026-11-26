@@ -1,10 +1,11 @@
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Link from "next/link";
 import GoogleMap from "@/components/GoogleMap";
+import OpenStatus from "@/components/OpenStatus";
 import { business, whatsappUrl } from "@/lib/business";
 export default function UbicacionPage() {
   return <>
-    <section className="bg-navy-900 text-white py-12 md:py-16 text-center px-5"><h1 className="font-roots text-3xl md:text-5xl">Óptica en Nueva Antequera, Puebla</h1><p className="mt-5 text-blue-50">{business.address}</p><a href={business.mapsUrl} className="btn-outline-white inline-block mt-6" target="_blank" rel="noopener noreferrer">Abrir ubicación en Google Maps</a></section>
+    <section className="bg-navy-900 text-white py-12 md:py-16 text-center px-5"><h1 className="font-roots text-3xl md:text-5xl">Óptica en Nueva Antequera, Puebla</h1><p className="mt-5 text-blue-50">{business.address}</p><div className="mt-4"><OpenStatus className="text-white" /></div><div className="flex flex-wrap gap-3 justify-center mt-5"><a href={business.directionsUrl} className="btn-whatsapp" target="_blank" rel="noopener noreferrer">Trazar ruta en Google Maps</a><a href={business.mapsUrl} className="btn-outline-white" target="_blank" rel="noopener noreferrer">Ver ficha y opiniones</a></div></section>
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid lg:grid-cols-2 gap-10">
       <div><h2 className="font-roots text-3xl text-navy-900 mb-5">Dirección y horarios</h2><address className="not-italic text-gray-700">{business.streetAddress}<br />{business.neighborhood}, {business.city} {business.postalCode}</address><div className="mt-6">{business.hours.map(line => <p key={line}>{line}</p>)}</div><p className="text-sm text-gray-600 mt-2">Horario de Puebla. Consulta disponibilidad en días festivos.</p><div className="flex flex-wrap gap-3 mt-6"><Link href="/contacto" className="btn-primary">Agendar visita</Link><a href={`tel:${business.phone}`} className="btn-secondary">{business.phoneLabel}</a></div></div>
       <GoogleMap height={360} />
