@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
       { source: "/contact", destination: "/contacto", permanent: true },
       { source: "/location", destination: "/ubicacion", permanent: true },
       { source: "/us", destination: "/nosotros", permanent: true },
+      // Spanish aliases people type or guess; the indexed page stays at /pricing.
+      { source: "/paquetes", destination: "/pricing", permanent: false },
+      { source: "/precios", destination: "/pricing", permanent: false },
+      { source: "/citas", destination: "/contacto", permanent: false },
     ];
   },
 };

@@ -5,6 +5,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 import { business } from "@/lib/business";
+import { captureSource, readSource, tagWhatsappHref } from "@/lib/source";
 const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const enabled = !!id && /^G-[A-Z0-9]+$/.test(id);
 function readConsent() {
@@ -20,11 +21,16 @@ export default function Analytics() {
   const consent = useSyncExternalStore(subscribeConsent, readConsent, () => null);
   const [ready, setReady] = useState(false);
   useEffect(() => {
+    captureSource();
     function click(event: MouseEvent) {
       const link = (event.target as Element)?.closest?.("a[href]");
       if (!link) return;
       const href = link.getAttribute("href") || "";
-      if (href.startsWith("https://wa.me/")) trackEvent("click_whatsapp");
+      if (href.startsWith("https://wa.me/")) {
+        // Tell the store which channel brought this visitor, inside the message itself.
+        link.setAttribute("href", tagWhatsappHref(href, readSource()));
+        trackEvent("click_whatsapp");
+      }
       else if (href.startsWith("tel:")) trackEvent("click_phone");
       else if (href.startsWith("https://www.google.com/maps") || href.startsWith("https://maps.google.com/")) trackEvent("click_directions");
     }
@@ -41,6 +47,7 @@ export default function Analytics() {
     try { localStorage.setItem("lg-analytics-consent", value); } catch { /* Preference still applies to this view. */ }
     window.dispatchEvent(new Event("lg:consent"));
   }
+  // The click and source listeners above run even when analytics is not configured.
   if (!enabled) return null;
   return <>
     {consent === "granted" && <>

@@ -6,7 +6,9 @@ export function AdminNotificationEmail(data: ContactFormData) {
       <Container style={{ backgroundColor: "white", padding: 32 }}>
         <Text style={{ fontSize: 24, fontWeight: "bold" }}>Nueva solicitud de contacto</Text>
         <Text>Nombre: {data.userName}</Text><Text>Teléfono: +52{data.userPhone}</Text>
-        <Text>Servicio: {data.serviceRequested}</Text><Text>Fecha: {data.submittedAt}</Text>
+        <Text>Servicio: {data.serviceRequested}</Text>
+        {data.preferredDay && <Text>Día preferido: {data.preferredDay}</Text>}{data.preferredTime && <Text>Horario preferido: {data.preferredTime}</Text>}
+        {data.source && <Text>Nos encontró por: {data.source}</Text>}<Text>Fecha: {data.submittedAt}</Text>
         {data.userMessage && <Text>Mensaje: {data.userMessage}</Text>}
         <Button href={`tel:+52${data.userPhone}`} style={{ backgroundColor: "#1e3a8a", color: "white", padding: 12 }}>Llamar al cliente</Button>
         <Text><a href={`https://wa.me/52${data.userPhone}`}>Abrir WhatsApp</a></Text>

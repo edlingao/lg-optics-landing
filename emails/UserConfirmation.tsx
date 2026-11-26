@@ -125,7 +125,7 @@ export const UserConfirmationEmail = ({
                 👥 Facebook
               </Link>
               <Link
-                href="https://www.tiktok.com/@lg.optics?lang=es"
+                href="https://www.tiktok.com/@lg.optics3?lang=es"
                 style={socialButton}
               >
                 🎵 TikTok

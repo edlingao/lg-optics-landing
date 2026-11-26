@@ -31,11 +31,14 @@ export default function Testimonials() {
             </figure>
           ))}
         </div>
-        <p className="mt-8 text-center">
+        <div className="mt-10 flex flex-col items-center gap-4 text-center">
+          <p className="text-gray-700">¿Ya eres cliente? Tu opinión ayuda a otras personas de Puebla a encontrarnos.</p>
+          {/* /opinion redirects to the Google review box; a plain link avoids prefetching a redirect. */}
+          <a href="/opinion" target="_blank" rel="noopener noreferrer" className="btn-primary">Dejar mi opinión en Google</a>
           <a href={business.mapsUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-navy-900 underline">
             Ver opiniones en Google Maps
           </a>
-        </p>
+        </div>
       </div>
     </section>
   );

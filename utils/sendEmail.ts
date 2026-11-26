@@ -19,9 +19,9 @@ export async function sendContactEmails(data: ContactFormData): Promise<EmailRes
     const [response] = await sgMail.send({
       to: process.env.ADMIN_EMAIL!,
       from: { email: process.env.FROM_EMAIL || "info@lg-optics.com", name: "L&G OPTICS" },
-      subject: `Nueva solicitud: ${data.serviceRequested}`,
+      subject: `Nueva solicitud: ${data.serviceRequested}${data.preferredDay ? ` · ${data.preferredDay}` : ""}`,
       html,
-      text: `Nombre: ${data.userName}\nTeléfono: +52${data.userPhone}\nServicio: ${data.serviceRequested}\nMensaje: ${data.userMessage || "Sin mensaje"}`,
+      text: `Nombre: ${data.userName}\nTeléfono: +52${data.userPhone}\nServicio: ${data.serviceRequested}${data.preferredDay ? `\nDía preferido: ${data.preferredDay}` : ""}${data.preferredTime ? `\nHorario preferido: ${data.preferredTime}` : ""}${data.source ? `\nNos encontró por: ${data.source}` : ""}\nMensaje: ${data.userMessage || "Sin mensaje"}`,
     });
     return { success: response.statusCode >= 200 && response.statusCode < 300, message: "Business notification processed" };
   } catch {

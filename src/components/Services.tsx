@@ -1,6 +1,7 @@
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Link from "next/link";
 import Image from "next/image";
+import { business, whatsappUrl } from "@/lib/business";
 
 export default function Services() {
   const services = [
@@ -102,14 +103,14 @@ export default function Services() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/522213374152"
+              href={whatsappUrl("Hola, vi su página web y quiero agendar una cita.")}
               className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
             >
               <WhatsAppIcon />
               <span>WhatsApp</span>
             </a>
             <a
-              href="tel:+522213374152"
+              href={`tel:${business.phone}`}
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
