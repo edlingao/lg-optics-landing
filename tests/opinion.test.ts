@@ -17,11 +17,15 @@ test("link-preview crawlers get the share card instead of a redirect", async () 
     assert.equal(response.status, 200, agent);
     const html = await response.text();
     assert.match(html, /<meta property="og:title" content="¡Déjanos tu opinión! \| L&amp;G OPTICS">/);
-    assert.match(html, /<meta property="og:image" content="https:\/\/www\.lg-optics\.com\/opinion\/opengraph-image">/);
+    assert.match(html, /<meta property="og:image" content="https:\/\/www\.lg-optics\.com\/opinion-card\.jpg">/);
   }
 });
 
-test("a missing user agent still reaches the review box", () => {
-  const response = GET(new Request("https://www.lg-optics.com/opinion"));
-  assert.equal(response.status, 307);
+test("unknown preview fetchers get the card, and it still sends a person on to Google", async () => {
+  for (const response of [GET(new Request("https://www.lg-optics.com/opinion")), visit("SomeNewChatApp/1.0"), visit("Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)")]) {
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, /og:image/);
+    assert.ok(html.includes(`location.replace(${JSON.stringify(business.reviewUrl)})`));
+  }
 });

@@ -34,7 +34,7 @@ Business name, phone, hours, address, existing Maps place reference and social p
 - **Hours**: `business.schedule` drives the "Abierto ahora / Cerrado" label, the schema and appointment validation. Change it together with `business.hours`.
 - **Appointment requests**: the contact form takes a preferred day and time and can be sent by email ("Pedir que me llamen") or as a prefilled WhatsApp chat. `/contacto?servicio=examen` preselects the service.
 - **Lead source**: links tagged with `?utm_source=` (`google`, `instagram`, `facebook`, `tiktok`, `whatsapp`, `qr`, `volante`) add "(Los encontré por …)" to WhatsApp messages and a line to the inquiry email. Use e.g. `https://www.lg-optics.com/?utm_source=instagram` in the Instagram bio.
-- **Short links** for print and QR codes: `/opinion` (Google reviews, from `business.reviewUrl`; people are redirected to Google at once, while chat apps building a link preview get the share title, text and image from `src/app/opinion/route.ts` and `opengraph-image.tsx`), `/whatsapp`, `/llegar` (directions). `/paquetes`, `/precios` and `/citas` are aliases.
+- **Short links** for print and QR codes: `/opinion` (Google reviews, from `business.reviewUrl`; people are redirected to Google at once, while chat apps building a link preview get the share title, text and image from `src/app/opinion/route.ts` and `public/opinion-card.jpg`), `/whatsapp`, `/llegar` (directions). `/paquetes`, `/precios` and `/citas` are aliases.
 - **Promotions**: add a dated entry to `src/lib/promotions.ts`; the banner appears and expires by itself. Publish only owner-approved offers with their real conditions.
 
 ## SEO and release
