@@ -5,10 +5,12 @@ const features = [
   { title: "Visítanos en Nueva Antequera", text: "Prueba los armazones en persona y consulta la disponibilidad de modelos en nuestra tienda de Puebla." },
 ];
 export default function WhyChooseUs() {
-  return <section className="py-16 bg-gray-50"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 className="font-roots text-3xl md:text-4xl text-navy-900 text-center mb-10">Elige tus lentes con información clara</h2>
-    <div className="grid md:grid-cols-3 gap-6">{features.map(item => <div key={item.title} className="bg-white border border-gray-200 rounded-2xl p-7">
-      <h3 className="text-xl font-semibold text-navy-900 mb-3">{item.title}</h3><p className="text-gray-700">{item.text}</p>
-    </div>)}</div><p className="text-center mt-8"><Link href="/nosotros" className="underline font-semibold text-navy-900">Conoce L&amp;G OPTICS</Link></p>
+  return <section className="bg-navy-900 py-16 text-white md:py-24"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="max-w-2xl font-roots text-4xl md:text-5xl">Elige tus lentes con información clara</h2>
+    <ol className="mt-10 grid gap-8 md:grid-cols-3 md:gap-10">{features.map((item, index) => <li key={item.title} className="border-t border-white/30 pt-5">
+      <span aria-hidden="true" className="font-roots text-4xl text-butter">{index + 1}</span>
+      <h3 className="mt-2 text-xl font-semibold">{item.title}</h3><p className="mt-2 text-blue-100">{item.text}</p>
+    </li>)}</ol>
+    <p className="mt-10"><Link href="/nosotros" className="font-semibold underline underline-offset-4">Conoce L&amp;G OPTICS</Link></p>
   </div></section>;
 }

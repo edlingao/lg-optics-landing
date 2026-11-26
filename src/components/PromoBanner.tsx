@@ -15,6 +15,6 @@ export default function PromoBanner() {
   }, []);
   if (!promotions.length || !promo) return null;
   return <aside aria-label="Promoción vigente" className="bg-amber-100 text-navy-950 text-center text-sm px-4 py-3">
-    <a href={whatsappUrl(promo.whatsapp)} className="font-semibold underline">{promo.text}</a> <span className="block sm:inline text-xs text-gray-700">{promo.conditions}</span>
+    <a href={whatsappUrl(promo.whatsapp)} className="font-semibold underline">{promo.text}</a> <span className="block sm:inline text-xs text-ink/80">{promo.conditions}</span>
   </aside>;
 }

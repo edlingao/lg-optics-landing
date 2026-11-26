@@ -2,202 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Performance optimizations */
 @layer base {
-  * {
-    box-sizing: border-box;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Bariol", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
-    color: #1f2937;
-    background-color: #ffffff;
-    overflow-x: hidden;
-  }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { overflow-x: hidden; }
+  img { max-width: 100%; height: auto; }
+  /* The display typeface has a single weight; stop browsers from faking a bold. */
+  .font-roots { font-weight: 400; letter-spacing: -0.015em; line-height: 1.05; }
 }
 
-/* Font loading with performance optimization */
-@font-face {
-  font-family: "Bariol";
-  src: url("/assets/Bariol_Serif_Regular.otf") format("opentype");
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Bakso Sapi";
-  src: url("/assets/BaksoSapi.otf") format("opentype");
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* CSS Custom Properties */
-:root {
-  --primary-50: #eff6ff;
-  --primary-600: #2563eb;
-  --primary-800: #1e40af;
-  --navy-900: #1e3a8a;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
-}
-
-/* Component utilities */
 @layer components {
-  .btn-primary {
-    @apply bg-navy-900 hover:bg-navy-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+  .btn-primary, .btn-secondary, .btn-outline-white, .btn-whatsapp {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-center font-semibold transition-colors duration-200;
   }
+  .btn-primary { @apply bg-navy-900 text-white hover:bg-navy-950; }
+  .btn-secondary { @apply border border-ink/25 bg-white text-ink hover:border-navy-900 hover:text-navy-900; }
+  .btn-outline-white { @apply border border-white/60 text-white hover:bg-white hover:text-navy-900; }
+  .btn-whatsapp { @apply bg-green-700 text-white hover:bg-green-800; }
 
-  .btn-secondary {
-    @apply bg-transparent border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300;
-  }
+  /* Small capitalised label above a heading. */
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-navy-900; }
+  .link { @apply font-semibold text-navy-900 underline decoration-navy-900/30 underline-offset-4 hover:decoration-navy-900; }
+  .tile { @apply rounded-3xl border border-ink/10 bg-white; }
 
-  .btn-outline-white {
-    @apply bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy-900 px-6 py-3 rounded-lg font-semibold transition-all duration-300;
-  }
-
-  .btn-whatsapp {
-    @apply inline-flex items-center justify-center gap-2 bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300;
-  }
-
-  .card {
-    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2;
-  }
-
-  .gradient-bg {
-    @apply bg-gradient-to-br from-navy-900 to-primary-800;
-  }
-
-  /* Subtle glassmorphism for Apple-like design */
-  .glass {
-    @apply backdrop-blur-md bg-white/60 border border-white/30;
-  }
-
-  .glass-dark {
-    @apply backdrop-blur-md bg-navy-900/70 border border-white/10;
-  }
-
-  .glass-light {
-    @apply backdrop-blur-md bg-white/60 border border-white/30;
+  /* The logo file is white; this paints it in the current text colour instead. */
+  .logo-mark {
+    display: block; aspect-ratio: 1390 / 780; background: currentColor;
+    -webkit-mask: url("/logo-mark.png") center / contain no-repeat; mask: url("/logo-mark.png") center / contain no-repeat;
   }
 }
 
-/* Swiper customization */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #ffffff !important;
-  width: 44px !important;
-  height: 44px !important;
-}
+@media print { .no-print { display: none !important; } }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 20px !important;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Responsive image optimization */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Focus states for accessibility */
-@layer utilities {
-  .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  }
-
-  /* Hide scrollbar for category tabs */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-/* Loading states */
-.loading-skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-/* WhatsApp button pulse animation */
-@keyframes pulse-ring {
-  0% { transform: scale(1); opacity: 0.4; }
-  50% { transform: scale(1.15); opacity: 0; }
-  100% { transform: scale(1); opacity: 0; }
-}
-
-.whatsapp-pulse {
-  position: relative;
-}
-
-.whatsapp-pulse::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  background: #25d366;
-  animation: pulse-ring 3s ease-in-out infinite;
-  z-index: -1;
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  body {
-    font-size: 16px;
-  }
-  
-  .text-responsive {
-    font-size: clamp(1rem, 4vw, 1.25rem);
-  }
-}
-
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
-  }
-}
 /* Accessible keyboard focus and reduced motion. */
 :focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {

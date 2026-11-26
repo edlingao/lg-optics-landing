@@ -54,7 +54,7 @@ export default function Analytics() {
       <Script id="analytics-config" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','${id}',{send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false,page_location:'${business.url}',page_referrer:''});`}</Script>
       <Script src={`https://www.googletagmanager.com/gtag/js?id=${id}`} strategy="afterInteractive" onLoad={() => setReady(true)} />
     </>}
-    {consent === "unset" && <div role="region" aria-label="Preferencia de analítica" className="fixed bottom-24 md:bottom-4 left-4 right-4 md:right-auto md:max-w-md bg-white border border-gray-300 rounded-xl p-5 shadow-xl z-50 text-sm">
+    {consent === "unset" && <div role="region" aria-label="Preferencia de analítica" className="fixed bottom-24 md:bottom-4 left-4 right-4 md:right-auto md:max-w-md bg-white border border-ink/20 rounded-xl p-5 shadow-xl z-50 text-sm">
       <p>Con tu permiso, usamos Google Analytics para medir visitas y uso del sitio. <Link href="/privacidad" className="underline">Privacidad</Link>.</p>
       <div className="flex gap-3 mt-3"><button onClick={() => choose("granted")} className="btn-primary">Aceptar</button><button onClick={() => choose("denied")} className="btn-secondary">Rechazar</button></div>
     </div>}

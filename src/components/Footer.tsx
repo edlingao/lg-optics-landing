@@ -2,19 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { business, navigation } from "@/lib/business";
 export default function Footer() {
-  return <footer className="bg-navy-900 text-white pt-12 pb-28 md:pb-24 font-sans">
+  return <footer className="bg-navy-950 pb-28 pt-14 text-white md:pb-10">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid gap-10 md:grid-cols-3">
-        <div><Image src="/LG-OPTICS.png" width={1390} height={780} sizes="150px" className="w-[150px] h-auto mb-4" alt="L&G OPTICS" />
-          <p className="font-roots text-xl">Ver bien, verse bien, sentirse bien.</p><p className="text-gray-200 mt-3">Lentes y exámenes de vista en Nueva Antequera, Puebla.</p></div>
-        <div><h2 className="font-bold text-lg mb-3">Enlaces</h2><nav aria-label="Enlaces del pie de página" className="flex flex-col items-start gap-2 text-gray-200">
-          <Link href="/">Inicio</Link>{navigation.map(p => <Link key={p.href} href={p.href}>{p.label}</Link>)}<Link href="/nosotros">Nosotros</Link><Link href="/privacidad">Privacidad</Link><a href="/opinion" target="_blank" rel="noopener noreferrer">Déjanos tu opinión</a>
+      <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1.3fr]">
+        <div><Image src="/LG-OPTICS.png" width={1390} height={780} sizes="150px" className="mb-5 h-auto w-[150px]" alt="L&G OPTICS" />
+          <p className="font-roots text-3xl">Ver bien, verse bien, sentirse bien.</p><p className="mt-3 text-blue-100">Lentes y exámenes de vista en Nueva Antequera, Puebla.</p></div>
+        <div><h2 className="eyebrow mb-4 !text-blue-200">Enlaces</h2><nav aria-label="Enlaces del pie de página" className="flex flex-col items-start text-blue-50">
+          {[{ href: "/", label: "Inicio" }, ...navigation, { href: "/nosotros", label: "Nosotros" }, { href: "/privacidad", label: "Privacidad" }].map(p => <Link key={p.href} href={p.href} className="py-1.5 underline-offset-4 hover:underline">{p.label}</Link>)}
+          <a href="/opinion" target="_blank" rel="noopener noreferrer" className="py-1.5 underline-offset-4 hover:underline">Déjanos tu opinión</a>
         </nav></div>
-        <div><h2 className="font-bold text-lg mb-3">Contacto y horarios</h2><address className="not-italic text-gray-200 space-y-2">
-          <p><a href={`tel:${business.phone}`}>{business.phoneLabel}</a></p><p><a href={`mailto:${business.email}`}>{business.email}</a></p><p><Link href="/ubicacion">{business.address}</Link></p>
-        </address><div className="mt-4 text-sm text-gray-200">{business.hours.map(line => <p key={line}>{line}</p>)}</div>
-        <nav aria-label="Redes sociales" className="flex flex-wrap gap-4 mt-5 text-sm">{Object.entries(business.social).map(([name, url]) => <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="underline capitalize py-2">{name}</a>)}</nav></div>
-      </div><p className="border-t border-white/25 mt-8 pt-6 text-sm text-gray-200">© {new Date().getFullYear()} {business.name}. Todos los derechos reservados.</p>
+        <div><h2 className="eyebrow mb-4 !text-blue-200">Contacto y horarios</h2><address className="space-y-2 not-italic text-blue-50">
+          <p><a href={`tel:${business.phone}`} className="underline-offset-4 hover:underline">{business.phoneLabel}</a></p><p><a href={`mailto:${business.email}`} className="underline-offset-4 hover:underline">{business.email}</a></p><p><Link href="/ubicacion" className="underline-offset-4 hover:underline">{business.address}</Link></p>
+        </address><div className="mt-4 text-sm text-blue-100">{business.hours.map(line => <p key={line}>{line}</p>)}</div>
+        <nav aria-label="Redes sociales" className="mt-5 flex flex-wrap gap-2 text-sm">{Object.entries(business.social).map(([name, url]) => <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/30 px-4 py-2 capitalize hover:bg-white hover:text-navy-950">{name}</a>)}</nav></div>
+      </div><p className="mt-10 border-t border-white/20 pt-6 text-sm text-blue-100">© {new Date().getFullYear()} {business.name}. Todos los derechos reservados.</p>
     </div>
   </footer>;
 }

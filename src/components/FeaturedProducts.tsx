@@ -1,17 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-const products = [
-  { name: "Lentes progresivos", image: "/glasses/prescription-lenses/glasses-1.png", text: "Consulta opciones para diferentes distancias de visión.", href: "/productos#prescription" },
-  { name: "Lentes de sol", image: "/glasses/sunglasses/sunglasses-1.png", text: "Explora estilos y pregunta por las características de cada modelo.", href: "/productos#sunglasses" },
-  { name: "Lentes con filtro azul", image: "/glasses/blue-filter-lenses/blue-1.png", text: "Conoce los materiales y tratamientos disponibles para tus lentes.", href: "/productos#blue-light" },
-];
+import { catalog, formatPrice } from "@/lib/catalog";
+
+// Two examples from each category of the catalogue, with the same entry prices as /productos.
+const products = catalog.flatMap(category => category.items.slice(0, 2).map(item => ({ ...item, category: category.name, href: `/productos#${category.id}` })));
+
 export default function FeaturedProducts() {
-  return <section className="py-16 bg-white"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 className="font-roots text-3xl md:text-4xl text-navy-900 text-center">Encuentra tus próximos lentes</h2>
-    <p className="max-w-2xl mx-auto text-center text-gray-700 mt-4 mb-10">Explora las categorías y consulta modelos, precios e inclusiones. La disponibilidad se confirma en tienda.</p>
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">{products.map(p => <article key={p.name} className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-      <div className="relative h-56 bg-gray-50"><Image src={p.image} alt={p.name} fill sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 45vw, 380px" className="object-contain p-4" /></div>
-      <div className="p-6"><h3 className="font-roots text-xl text-navy-900 mb-3">{p.name}</h3><p className="text-gray-700 mb-4">{p.text}</p><Link href={p.href} className="underline text-navy-900 font-semibold">Ver {p.name.toLowerCase()}</Link></div>
-    </article>)}</div><div className="text-center mt-8"><Link href="/productos" className="btn-primary inline-block">Ver todos los productos</Link></div>
+  return <section className="py-16 md:py-24"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-wrap items-end justify-between gap-4">
+      <div><h2 className="font-roots text-4xl text-ink md:text-5xl">Encuentra tus próximos lentes</h2>
+        <p className="mt-3 max-w-xl text-ink/75">Explora las categorías y consulta modelos, precios e inclusiones. La disponibilidad se confirma en tienda.</p></div>
+      <Link href="/productos" className="link">Ver todos los productos</Link>
+    </div>
+    <ul className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 md:gap-x-6 md:gap-y-10">{products.map(p => <li key={p.name}>
+      <Link href={p.href} className="group block">
+        <div className="relative aspect-square overflow-hidden rounded-3xl bg-sand"><Image src={p.image} alt={`Ejemplo de ${p.name.toLowerCase()}`} fill sizes="(max-width: 767px) 50vw, 400px" className="object-cover transition-transform duration-500 group-hover:scale-105" /></div>
+        <p className="mt-3 text-xs text-ink/70 sm:text-sm">{p.category}</p>
+        <h3 className="font-semibold text-ink sm:text-lg">{p.name}</h3>
+        <p className="text-sm text-ink/75 sm:text-base">Desde {formatPrice(p.from)}</p>
+      </Link>
+    </li>)}</ul>
   </div></section>;
 }
