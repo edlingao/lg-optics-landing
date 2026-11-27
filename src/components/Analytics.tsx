@@ -6,7 +6,9 @@ import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 import { business } from "@/lib/business";
 import { captureSource, readSource, tagWhatsappHref } from "@/lib/source";
-const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+// The Measurement ID is public (it is visible in the page source), so the store's ID is the
+// default for production builds. Set NEXT_PUBLIC_GA_MEASUREMENT_ID to use a different property.
+const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || (process.env.NODE_ENV === "production" ? "G-YN5SB2ZL3T" : undefined);
 const enabled = !!id && /^G-[A-Z0-9]+$/.test(id);
 function readConsent() {
   try { return localStorage.getItem("lg-analytics-consent") || "unset"; } catch { return "denied"; }
