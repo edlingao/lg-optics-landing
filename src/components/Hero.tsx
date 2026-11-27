@@ -1,31 +1,32 @@
-import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
 import { business, whatsappUrl } from "@/lib/business";
 import { packages } from "@/lib/packages";
-import { exams } from "@/lib/exams";
 import { formatPrice } from "@/lib/catalog";
-import OpenStatus from "./OpenStatus";
 const fromPackage = formatPrice(Math.min(...packages.map(p => p.price)));
-const fromExam = formatPrice(Math.min(...exams.map(e => e.price)));
 export default function Hero() {
-  return <section className="relative bg-navy-900 text-white py-10 md:py-20 overflow-hidden">
-    <Image src="/glasses-copy.jpg" alt="" fill sizes="100vw" loading="eager" fetchPriority="high" className="object-cover opacity-10" />
-    <div className="relative max-w-5xl mx-auto px-5 text-center">
-      <p className="text-blue-100 text-sm font-semibold tracking-wide mb-4">NUEVA ANTEQUERA · PUEBLA</p>
-      <h1 className="font-roots text-3xl sm:text-4xl md:text-6xl leading-tight max-w-4xl mx-auto">Óptica en Puebla: lentes y examen de vista</h1>
-      <p className="text-base md:text-xl text-blue-50 mt-5 max-w-2xl mx-auto">Lentes graduados con armazón desde <strong className="text-white">{fromPackage}</strong> y examen de vista desde <strong className="text-white">{fromExam}</strong>. Te esperamos en {business.neighborhood}.</p>
-      <div className="flex flex-col sm:flex-row gap-3 justify-center mt-7">
-        <a href={whatsappUrl("Hola, vi su página web y quiero agendar un examen de vista.")} className="btn-whatsapp"><WhatsAppIcon /><span>Agendar por WhatsApp</span></a>
-        <a href={business.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn-outline-white">Cómo llegar a la tienda</a>
+  return <section>
+    {/* The photos are square, so every box here is square too: nothing is cropped or enlarged. */}
+    <div className="mx-auto grid max-w-[1600px] md:aspect-[2/1] md:grid-cols-2">
+      <div className="relative aspect-square md:order-2 md:aspect-auto"><Image src="/bety-2.png" alt="Clienta con armazón azul claro en la tienda L&G OPTICS" fill priority quality={90} sizes="(max-width: 767px) 100vw, (max-width: 1600px) 50vw, 800px" className="object-cover" /></div>
+      <div className="relative flex items-center bg-ink px-5 py-10 text-white md:p-0">
+        <Image src="/glasses/sunglasses/sunglasses-6.png" alt="" fill priority quality={90} sizes="(max-width: 767px) 1px, (max-width: 1600px) 50vw, 800px" className="hidden object-cover md:block" />
+        <div className="absolute inset-0 hidden bg-black/35 md:block" />
+        <div className="relative w-full md:px-8 md:text-center lg:px-16">
+          <h1><span className="eyebrow block !text-white">Óptica en Puebla · Lentes y armazones</span>
+            <span className="mt-3 block font-roots text-[3.4rem] leading-[0.95] sm:text-7xl md:text-5xl lg:text-6xl xl:text-[5.5rem]">Ver bien, <em>verse bien,</em> sentirse bien.</span></h1>
+          <p className="mt-4 text-base text-white/90 md:mx-auto md:max-w-md">Lentes graduados con armazón desde {fromPackage}, con examen de vista incluido.</p>
+          <div className="mt-6 flex gap-3 md:justify-center">
+            <Link href="/productos" className="btn-white flex-1 md:flex-none">Ver lentes</Link>
+            <a href={whatsappUrl("Hola, vi su página web y quiero agendar un examen de vista.")} className="btn-outline-white flex-1 md:flex-none">Agendar examen</a>
+          </div>
+        </div>
       </div>
-      <div className="mt-5 min-h-6"><OpenStatus className="text-white" /></div>
-      <p className="text-sm text-blue-100 mt-1">{business.streetAddress} · <Link href="/ubicacion" className="underline">Dirección y horarios</Link></p>
-      <ul className="grid sm:grid-cols-3 gap-3 mt-9 text-sm text-blue-50">
-        <li className="rounded-xl bg-white/10 p-4"><Link href="/examenes-de-vista" className="underline">Consulta tipos de examen y precios</Link></li>
-        <li className="rounded-xl bg-white/10 p-4"><Link href="/productos" className="underline">Explora lentes y armazones</Link></li>
-        <li className="rounded-xl bg-white/10 p-4"><Link href="/pricing" className="underline">Compara nuestros paquetes</Link></li>
-      </ul>
     </div>
+    <p className="bg-sand px-4 py-3 text-center text-xs text-ink/80 sm:text-sm">
+      <Link href="/examenes-de-vista" className="underline-offset-4 hover:underline">Examen de vista incluido</Link><span aria-hidden="true" className="mx-2">·</span>
+      <Link href="/pricing" className="underline-offset-4 hover:underline">Paquetes con armazón desde {fromPackage}</Link><span aria-hidden="true" className="mx-2 hidden sm:inline">·</span>
+      <Link href="/ubicacion" className="hidden underline-offset-4 hover:underline sm:inline">{business.neighborhood}, {business.city}</Link>
+    </p>
   </section>;
 }

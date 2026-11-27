@@ -40,12 +40,14 @@ export function whatsappUrl(message: string = defaultWhatsappMessage) {
   return `https://wa.me/${business.phone.slice(1)}?text=${encodeURIComponent(message)}`;
 }
 
+// Shop categories first, as in a store; services and the address follow.
 export const navigation = [
-  { href: "/productos", label: "Productos" },
-  { href: "/examenes-de-vista", label: "Exámenes" },
+  { href: "/productos#prescription", label: "Ópticos" },
+  { href: "/productos#sunglasses", label: "Sol" },
+  { href: "/productos#blue-light", label: "Filtro azul" },
   { href: "/pricing", label: "Paquetes" },
-  { href: "/contacto", label: "Contacto" },
-  { href: "/ubicacion", label: "Ubicación" },
+  { href: "/examenes-de-vista", label: "Examen de la vista" },
+  { href: "/ubicacion", label: "Tienda" },
 ] as const;
 
 function clock(minutes: number) {
