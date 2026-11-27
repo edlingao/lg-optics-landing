@@ -5,7 +5,7 @@ export const packages = [
 ] as const;
 export const packageFaqs = [
   { question: "¿Qué armazón incluye el paquete?", answer: "Los paquetes incluyen un armazón de línea. Consulta los modelos disponibles; un armazón diferente puede modificar el precio final." },
-  { question: "¿El examen de vista está incluido?", answer: "El examen se cotiza por separado. Consulta los tipos de examen y sus precios antes de agendar." },
+  { question: "¿El examen de vista está incluido?", answer: "Sí, el examen de vista está incluido en el precio del paquete. Consulta los tipos de examen antes de agendar." },
   { question: "¿La graduación cambia la cotización?", answer: "Comparte tu receta para confirmar los materiales, índices y tratamientos compatibles. Solicita el precio final de tu combinación antes de realizar el pedido." },
   { question: "¿Cuándo estarán listos mis lentes?", answer: "El plazo depende del lente y de la disponibilidad. Confirma con el equipo la fecha estimada de entrega de tu pedido." },
   { question: "¿Qué garantía tienen mis lentes?", answer: "Pide las condiciones aplicables al armazón, lentes y tratamientos que elijas antes de comprar. El equipo te indicará cómo solicitar ajustes o seguimiento." },

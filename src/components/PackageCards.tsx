@@ -1,17 +1,14 @@
-import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { whatsappUrl } from "@/lib/business";
 import { packages } from "@/lib/packages";
 import { formatPrice } from "@/lib/catalog";
 
-/** The three packages with their price, inclusions and a WhatsApp quote button. */
+/** The three packages side by side: price, inclusions and a WhatsApp quote link. */
 export default function PackageCards({ heading: Heading = "h3" }: { heading?: "h2" | "h3" }) {
-  return <div className="grid gap-5 md:grid-cols-3">{packages.map(p => <article key={p.name} className="tile flex flex-col p-7">
-    <Heading className="font-roots text-3xl text-ink">{p.name}</Heading>
-    <p className="mt-4 text-sm text-ink/70">Desde</p>
-    <p className="font-roots text-5xl text-navy-900">{formatPrice(p.price)} <span className="font-sans text-sm font-semibold text-ink/70">MXN</span></p>
-    <ul className="my-6 space-y-3 border-t border-ink/10 pt-6 text-ink/80">{p.features.map(feature => <li key={feature} className="flex gap-3">
-      <svg aria-hidden="true" className="mt-1 h-4 w-4 flex-shrink-0 text-navy-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4L19 7" /></svg>{feature}
-    </li>)}</ul>
-    <a href={whatsappUrl(`Hola, me interesa el paquete ${p.name}. ¿Pueden confirmar el precio y las inclusiones para mi graduación?`)} className="btn-primary mt-auto" aria-label={`Cotizar este paquete: ${p.name}`}><WhatsAppIcon /><span>Cotizar este paquete</span></a>
+  return <div className="grid border-ink/15 md:grid-cols-3 md:border-l">{packages.map(p => <article key={p.name} className="flex flex-col border-t border-ink/15 py-8 md:border-b md:border-r md:px-8">
+    <Heading className="eyebrow">{p.name}</Heading>
+    <p className="mt-3 font-roots text-6xl">{formatPrice(p.price)}</p>
+    <p className="text-xs text-ink/70">Desde · MXN</p>
+    <ul className="my-6 space-y-2 text-sm text-ink/80">{p.features.map(feature => <li key={feature}>{feature}</li>)}</ul>
+    <a href={whatsappUrl(`Hola, me interesa el paquete ${p.name}. ¿Pueden confirmar el precio y las inclusiones para mi graduación?`)} className="btn-secondary mt-auto self-start" aria-label={`Cotizar este paquete: ${p.name}`}>Cotizar este paquete</a>
   </article>)}</div>;
 }

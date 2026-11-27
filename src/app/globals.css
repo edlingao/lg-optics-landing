@@ -11,18 +11,22 @@
 }
 
 @layer components {
-  .btn-primary, .btn-secondary, .btn-outline-white, .btn-whatsapp {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-center font-semibold transition-colors duration-200;
+  .btn-primary, .btn-secondary, .btn-outline-white, .btn-white, .btn-whatsapp {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-center text-sm font-medium transition-colors duration-200;
   }
-  .btn-primary { @apply bg-navy-900 text-white hover:bg-navy-950; }
-  .btn-secondary { @apply border border-ink/25 bg-white text-ink hover:border-navy-900 hover:text-navy-900; }
-  .btn-outline-white { @apply border border-white/60 text-white hover:bg-white hover:text-navy-900; }
+  .btn-primary { @apply bg-ink text-white hover:bg-black; }
+  .btn-secondary { @apply border border-ink bg-white text-ink hover:bg-ink hover:text-white; }
+  .btn-white { @apply bg-white text-ink hover:bg-sand; }
+  .btn-outline-white { @apply border border-white text-white hover:bg-white hover:text-ink; }
   .btn-whatsapp { @apply bg-green-700 text-white hover:bg-green-800; }
 
   /* Small capitalised label above a heading. */
-  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-navy-900; }
-  .link { @apply font-semibold text-navy-900 underline decoration-navy-900/30 underline-offset-4 hover:decoration-navy-900; }
-  .tile { @apply rounded-3xl border border-ink/10 bg-white; }
+  .eyebrow { @apply text-[11px] font-medium uppercase tracking-[0.2em] text-ink/70; }
+  .link { @apply font-medium text-ink underline underline-offset-4 hover:no-underline; }
+  .tile { @apply border border-ink/15 bg-white; }
+  /* A row that scrolls sideways with the finger; the scrollbar is hidden. */
+  .rail { @apply flex snap-x snap-mandatory gap-3 overflow-x-auto; scrollbar-width: none; }
+  .rail::-webkit-scrollbar { display: none; }
 
   /* The logo file is white; this paints it in the current text colour instead. */
   .logo-mark {
@@ -34,7 +38,7 @@
 @media print { .no-print { display: none !important; } }
 
 /* Accessible keyboard focus and reduced motion. */
-:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
+:focus-visible { outline: 2px solid #1c1c1c; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }

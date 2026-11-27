@@ -1,49 +1,32 @@
-import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
 import { business, whatsappUrl } from "@/lib/business";
 import { packages } from "@/lib/packages";
-import { exams } from "@/lib/exams";
 import { formatPrice } from "@/lib/catalog";
-import OpenStatus from "./OpenStatus";
 const fromPackage = formatPrice(Math.min(...packages.map(p => p.price)));
-const fromExam = formatPrice(Math.min(...exams.map(e => e.price)));
-const facts = [
-  { label: "Examen de vista", value: `Desde ${fromExam}`, href: "/examenes-de-vista" },
-  { label: "Lentes con armazón", value: `Desde ${fromPackage}`, href: "/pricing" },
-  { label: "Lentes y armazones", value: "Ver modelos", href: "/productos" },
-  { label: business.neighborhood, value: "Cómo llegar", href: "/ubicacion" },
-];
 export default function Hero() {
   return <section>
-    <div className="max-w-7xl mx-auto grid items-center gap-10 px-4 pb-12 pt-8 sm:px-6 md:pt-14 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8 lg:pb-16">
-      <div>
-        <p className="eyebrow">{business.neighborhood} · {business.city}</p>
-        <h1 className="mt-4 font-roots text-[2.9rem] text-ink sm:text-6xl xl:text-7xl">Óptica en Puebla: lentes y <em className="text-navy-900">examen de vista</em></h1>
-        <p className="mt-5 max-w-xl text-lg text-ink/75">Lentes graduados con armazón desde <strong className="text-ink">{fromPackage}</strong> y examen de vista desde <strong className="text-ink">{fromExam}</strong>. Te esperamos en {business.neighborhood}.</p>
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <a href={whatsappUrl("Hola, vi su página web y quiero agendar un examen de vista.")} className="btn-whatsapp"><WhatsAppIcon /><span>Agendar por WhatsApp</span></a>
-          <a href={business.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">Cómo llegar a la tienda</a>
+    {/* The photos are square, so every box here is square too: nothing is cropped or enlarged. */}
+    <div className="mx-auto grid max-w-[1600px] md:aspect-[2/1] md:grid-cols-2">
+      <div className="relative aspect-square md:order-2 md:aspect-auto"><Image src="/bety-2.png" alt="Clienta con armazón azul claro en la tienda L&G OPTICS" fill priority quality={90} sizes="(max-width: 767px) 100vw, (max-width: 1600px) 50vw, 800px" className="object-cover" /></div>
+      <div className="relative flex items-center bg-ink px-5 py-10 text-white md:p-0">
+        <Image src="/glasses/sunglasses/sunglasses-6.png" alt="" fill priority quality={90} sizes="(max-width: 767px) 1px, (max-width: 1600px) 50vw, 800px" className="hidden object-cover md:block" />
+        <div className="absolute inset-0 hidden bg-black/35 md:block" />
+        <div className="relative w-full md:px-8 md:text-center lg:px-16">
+          <h1><span className="eyebrow block !text-white">Óptica en Puebla · Lentes y armazones</span>
+            <span className="mt-3 block font-roots text-[3.4rem] leading-[0.95] sm:text-7xl md:text-5xl lg:text-6xl xl:text-[5.5rem]">Ver bien, <em>verse bien,</em> sentirse bien.</span></h1>
+          <p className="mt-4 text-base text-white/90 md:mx-auto md:max-w-md">Lentes graduados con armazón desde {fromPackage}, con examen de vista incluido.</p>
+          <div className="mt-6 flex gap-3 md:justify-center">
+            <Link href="/productos" className="btn-white flex-1 md:flex-none">Ver lentes</Link>
+            <a href={whatsappUrl("Hola, vi su página web y quiero agendar un examen de vista.")} className="btn-outline-white flex-1 md:flex-none">Agendar examen</a>
+          </div>
         </div>
-        <div className="mt-5 min-h-6"><OpenStatus className="text-ink" /></div>
-        <p className="mt-1 text-sm text-ink/70">{business.streetAddress} · <Link href="/ubicacion" className="underline underline-offset-4">Dirección y horarios</Link></p>
-      </div>
-      <div className="relative pb-6">
-        <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-sand sm:aspect-[16/11] lg:aspect-[5/6]">
-          <Image src="/bety-1.png" alt="Clienta sonriendo con sus lentes nuevos en la tienda L&G OPTICS" fill priority sizes="(max-width: 1023px) calc(100vw - 32px), 600px" className="object-cover" />
-        </div>
-        <Link href="/pricing" className="absolute bottom-0 left-4 flex items-center gap-3 rounded-2xl bg-white p-2.5 pr-5 shadow-xl shadow-ink/10 sm:left-8">
-          <Image src="/glasses/prescription-lenses/glasses-1.png" alt="" width={64} height={64} sizes="64px" className="h-16 w-16 rounded-xl object-cover" />
-          <span><span className="block text-xs text-ink/70">Paquetes con armazón</span><span className="block font-semibold text-ink">Desde {fromPackage}</span></span>
-        </Link>
       </div>
     </div>
-    <ul className="border-y border-ink/10 bg-white">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 lg:px-4">
-        {facts.map(fact => <li key={fact.label} className="border-ink/10 odd:border-r [&:nth-child(-n+2)]:border-b lg:border-b-0 lg:border-r lg:last:border-r-0 lg:[&:nth-child(-n+2)]:border-b-0">
-          <Link href={fact.href} className="block px-4 py-4 hover:bg-cream sm:px-6 sm:py-5"><span className="block text-xs text-ink/70 sm:text-sm">{fact.label}</span><span className="block font-semibold text-ink sm:text-lg">{fact.value} <span aria-hidden="true">→</span></span></Link>
-        </li>)}
-      </div>
-    </ul>
+    <p className="bg-sand px-4 py-3 text-center text-xs text-ink/80 sm:text-sm">
+      <Link href="/examenes-de-vista" className="underline-offset-4 hover:underline">Examen de vista incluido</Link><span aria-hidden="true" className="mx-2">·</span>
+      <Link href="/pricing" className="underline-offset-4 hover:underline">Paquetes con armazón desde {fromPackage}</Link><span aria-hidden="true" className="mx-2 hidden sm:inline">·</span>
+      <Link href="/ubicacion" className="hidden underline-offset-4 hover:underline sm:inline">{business.neighborhood}, {business.city}</Link>
+    </p>
   </section>;
 }

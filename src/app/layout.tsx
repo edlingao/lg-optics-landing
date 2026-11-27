@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="es-MX" className={`${sans.variable} ${display.variable}`}><body className="antialiased min-h-screen flex flex-col bg-cream text-ink font-sans">
-    <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] bg-white text-navy-900 px-4 py-3">Saltar al contenido</a>
+    <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] bg-white text-ink px-4 py-3">Saltar al contenido</a>
     <JsonLd data={businessSchema} /><PromoBanner /><Header /><main id="main-content" tabIndex={-1} className="flex-1">{children}</main><ContactActions /><Footer /><Analytics />
   </body></html>;
 }

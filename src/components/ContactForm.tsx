@@ -34,7 +34,7 @@ export default function ContactForm() {
     trackEvent("click_whatsapp", data.servicio);
     window.open(tagWhatsappHref(whatsappUrl(lines.join("\n")), readSource()), "_blank", "noopener");
   }
-  const field = "w-full rounded-xl border border-ink/20 bg-white px-4 py-3 text-ink focus:outline-none focus:ring-2 focus:ring-navy-900 disabled:bg-sand";
+  const field = "w-full rounded-md border border-ink/20 bg-white px-4 py-3 text-ink focus:outline-none focus:ring-2 focus:ring-ink disabled:bg-sand";
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitting.current) return;

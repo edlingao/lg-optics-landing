@@ -13,11 +13,11 @@ export default {
         primary: blue,
         // Brand blue, taken from the store logo.
         navy: blue,
-        // Text colour: a near-black blue, softer than pure black on the cream background.
-        ink: '#111a35',
-        cream: '#fbf7f0',
-        sand: '#f1e9dc',
-        butter: '#ffe27a',
+        // Text and buttons: near-black, as fashion stores use. Blue is kept for the logo only.
+        ink: '#1c1c1c',
+        cream: '#ffffff',
+        // Soft neutral for the few tinted bands and image placeholders.
+        sand: '#f4f3ef',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],

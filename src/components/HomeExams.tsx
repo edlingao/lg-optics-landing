@@ -1,24 +1,22 @@
-import WhatsAppIcon from "@/components/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
-import { whatsappUrl } from "@/lib/business";
-import { exams } from "@/lib/exams";
-import { formatPrice } from "@/lib/catalog";
+import OpenStatus from "./OpenStatus";
+import { business, whatsappUrl } from "@/lib/business";
+// The store itself: where it is, when it opens, and that eye exams happen here.
 export default function HomeExams() {
-  return <section className="py-16 md:py-24"><div className="max-w-7xl mx-auto grid items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
-    <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-sand lg:aspect-[5/6]"><Image src="/optica1.jpeg" alt="Exhibidor de armazones en la tienda L&G OPTICS" fill sizes="(max-width: 1023px) calc(100vw - 32px), 600px" className="object-cover" /></div>
-    <div>
-      <p className="eyebrow">Exámenes de vista</p>
-      <h2 className="mt-3 font-roots text-4xl text-ink md:text-5xl">Consulta tu graduación</h2>
-      <p className="mt-3 text-ink/75">Precios de entrada en MXN y duración estimada. Confirma disponibilidad, alcance y costo de tu visita al agendar.</p>
-      <ul className="mt-6 border-t border-ink/15">{exams.map(e => <li key={e.name} className="flex items-baseline justify-between gap-4 border-b border-ink/15 py-4">
-        <span><span className="block font-semibold text-ink">{e.name}</span><span className="text-sm text-ink/70">{e.duration}</span></span>
-        <span className="whitespace-nowrap font-roots text-2xl text-navy-900">{formatPrice(e.price)}</span>
-      </li>)}</ul>
-      <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-        <a href={whatsappUrl("Hola, vi su página web y quiero agendar un examen de vista.")} className="btn-whatsapp"><WhatsAppIcon /><span>Agendar por WhatsApp</span></a>
-        <Link href="/examenes-de-vista" className="btn-secondary">Ver tipos de examen</Link>
+  return <section className="grid md:grid-cols-[3fr_2fr]">
+    <div className="relative aspect-[16/9] md:aspect-auto md:min-h-[420px]"><Image src="/optica3.jpeg" alt="Interior de la tienda L&G OPTICS con exhibidores de armazones" fill quality={90} sizes="(max-width: 767px) 100vw, 60vw" className="object-cover" /></div>
+    <div className="flex flex-col justify-center bg-sand px-5 py-12 md:px-10 lg:px-14">
+      <p className="eyebrow">Tienda · {business.neighborhood}</p>
+      <h2 className="mt-3 font-roots text-4xl md:text-6xl">Visítanos en {business.neighborhood}</h2>
+      <p className="mt-4 text-ink/80">Prueba los armazones en persona y agenda tu examen de vista.</p>
+      <address className="mt-6 text-sm not-italic text-ink/80"><p>{business.address}</p>{business.hours.map(line => <p key={line}>{line}</p>)}</address>
+      <div className="mt-3 min-h-6"><OpenStatus /></div>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <a href={business.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">Cómo llegar</a>
+        <a href={whatsappUrl("Hola, vi su página web y quiero agendar un examen de vista.")} className="btn-secondary">Agendar examen</a>
       </div>
+      <p className="mt-5"><Link href="/examenes-de-vista" className="link text-sm">Ver tipos de examen</Link></p>
     </div>
-  </div></section>;
+  </section>;
 }
